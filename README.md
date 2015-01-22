@@ -1,0 +1,4 @@
+Coinbase
+========
+
+** TODO: Add description **
