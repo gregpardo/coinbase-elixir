@@ -29,11 +29,20 @@ defmodule Coinbase.API.Http do
   end
 
   defp handle_response(response) do
-    case HTTPoison.Response.success?(response) do
-      true ->
-        {:ok, response.body}
-      false ->
-        {:error, response.body}
+    case response do
+      {:ok, %HTTPoison.Response{status_code: code, body: body}} ->
+        cond do
+          code in 200..299 ->
+            {:ok, body}
+          code == 304 ->
+            {:ok, body}
+          code == 302 ->
+            {:ok, body}
+          true ->
+            {:error, body}
+        end
+      {:ok, %HTTPoison.Error{reason: reason}} ->
+        {:error, reason}
     end
   end
 
