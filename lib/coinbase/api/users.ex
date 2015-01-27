@@ -26,4 +26,11 @@ defmodule Coinbase.API.Users do
     Base.post(coinbase, @endpoint, body, @data_struct, @collection_name)
   end
 
+  @doc """
+  Updates a user
+  """
+  @spec update(pid, map) :: Coinbase.response
+  def update(coinbase, user) do
+    Base.put(coinbase, "#{@endpoint}/#{user.id}", user, @data_struct, @collection_name)
+  end
 end
