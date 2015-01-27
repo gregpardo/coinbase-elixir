@@ -30,4 +30,11 @@ defmodule Coinbase.User do
     :buy_limit,
     :sell_limit
   ]
+
+  # Coinbase will error if we pass it extra fields
+  # So this creates a new user object with only what we need
+  def new(user) do
+    %{email: user.email, password: user.password}
+  end
+
 end

@@ -1,5 +1,6 @@
 defmodule Coinbase.API.Users do
   alias Coinbase.API.Base
+  alias Coinbase.User
 
   @endpoint "users"
   @data_struct Coinbase.User
@@ -19,13 +20,8 @@ defmodule Coinbase.API.Users do
   """
   @spec create(pid, @data_struct.t, map) :: Coinbase.response
   def create(coinbase, user, options \\ %{}) do
-    body = Map.merge(%{user: new_user(user)}, options)
+    body = Map.merge(%{user: User.new(user)}, options)
     Base.post(coinbase, @endpoint, body, @data_struct, @collection_name)
   end
 
-  # Coinbase will error if we pass it extra fields
-  # So this creates a new user object with only what we need
-  defp new_user(user) do
-    %{email: user.email, password: user.password}
-  end
 end
