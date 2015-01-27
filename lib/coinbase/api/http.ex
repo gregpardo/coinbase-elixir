@@ -48,7 +48,7 @@ defmodule Coinbase.API.Http do
           true ->
             {:error, body}
         end
-      {:ok, %HTTPoison.Error{reason: reason}} ->
+      {:error, %HTTPoison.Error{reason: reason}} ->
         {:error, reason}
     end
   end

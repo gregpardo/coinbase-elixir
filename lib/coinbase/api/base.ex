@@ -36,6 +36,10 @@ defmodule Coinbase.API.Base do
     |> to_response(struct, collection_name)
   end
 
+  def to_response({:error, error}, _, _) do
+    {:error, error}
+  end
+
   def to_response({status, ""}, _, _) do
     {status, nil}
   end
