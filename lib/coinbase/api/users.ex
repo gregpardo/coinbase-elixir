@@ -16,7 +16,9 @@ defmodule Coinbase.API.Users do
 
   @doc """
   Creates a new user with email and password
-  Optionally include client_id and scopes
+  Optionally include client_id and scopes for oauth support
+  e.g.
+  options = %{client_id: "c044110d72cb725bc94ea4361ab37f312eeda8d27df30d2bcc47825723fcfb58", scopes: "merchant"}
   """
   @spec create(pid, @data_struct.t, map) :: Coinbase.response
   def create(coinbase, user, options \\ %{}) do
