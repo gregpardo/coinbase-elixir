@@ -94,13 +94,11 @@ defmodule Coinbase.API.Http do
     api_nonce = Integer.to_string(Date.now(:secs))
     # This is how coinbase generates the hmac
     api_message = api_nonce <> full_url
+    # Only append body if neccessary
     unless body == nil do
       api_message = api_message <> body
     end
     api_signature = Crypt.hmac(api_secret, api_message)
-    IO.puts(inspect api_secret)
-    IO.puts(inspect api_message)
-    IO.puts(inspect api_signature)
     ["User-Agent": "Elixir", "Connection": "close", "Host": "coinbase.com", "ACCESS_KEY": "#{api_key}", "ACCESS_SIGNATURE": "#{api_signature}", "ACCESS_NONCE": "#{api_nonce}" ]
   end
 
