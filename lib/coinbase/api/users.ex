@@ -12,4 +12,14 @@ defmodule Coinbase.API.Users do
   def get_current(coinbase) do
     Base.get(coinbase, @endpoint, "self", @data_struct, @collection_name)
   end
+
+  @doc """
+  Creates a new user with email and password
+  Optionally include client_id and scopes
+  """
+  @spec create(pid, @data_struct.t, map) :: Coinbase.response
+  def create(coinbase, user, options \\ %{}) do
+    body = Map.merge(%{user: user}, options)
+    Base.post(coinbase, @endpoint, body, @data_struct, @collection_name)
+  end
 end
