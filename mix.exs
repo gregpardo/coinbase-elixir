@@ -12,12 +12,18 @@ defmodule Coinbase.Mixfile do
   end
 
   def application do
-    [applications: [:httpotion, :logger, :poison]]
+    [applications: app_list(Mix.env)]
   end
+
+  defp app_list(:dev), do: [:dotenv | app_list]
+  defp app_list(_), do: app_list
+  defp app_list, do: [:httpoison, :logger]
+
 
   defp deps do
     [
-      {:httpotion, "~> 0.2"},
+      {:dotenv, "~> 0.0.4"},
+      {:httpoison, "~> 0.6.0"},
       {:poison, "~> 1.2.1"}
     ]
   end

@@ -5,10 +5,7 @@ defmodule Coinbase do
   @type response :: {status, map}
 
   defmodule Config do
-    @type t %Config{
-      api_key: binary,
-      api_secret: binary
-    }
+    @type t :: %Config{api_key: binary, api_secret: binary}
     defstruct [:api_key, :api_secret]
   end
 
@@ -43,7 +40,7 @@ defmodule Coinbase do
   @doc """
   Creates a new Coinbase process
   """
-@spec new({string, string}) :: { Coinbase.status, pid }
+@spec new({binary, binary}) :: { Coinbase.status, pid }
   def new({api_key, api_secret}) do
     start_link(%Config{api_key: api_key, api_secret: api_secret})
   end
@@ -65,7 +62,7 @@ defmodule Coinbase do
   @doc """
   Returns the API key
   """
-@spec api_key(pid) :: string
+@spec api_key(pid) :: binary
   def api_key(coinbase) do
     configuration(coinbase).api_key
   end
@@ -73,7 +70,7 @@ defmodule Coinbase do
   @doc """
   Returns the API secret
   """
-@spec api_secret(pid) :: string
+@spec api_secret(pid) :: binary
   def api_secret(coinbase) do
     configuration(coinbase).api_secret
   end

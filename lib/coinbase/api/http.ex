@@ -6,30 +6,30 @@ defmodule Coinbase.API.Http do
 
   def get(coinbase, endpoint) do
     headers = get_headers(coinbase)
-    HTTPotion.get(@url <> endpoint, headers, options: @options)
+    HTTPoison.get(@url <> endpoint, headers, options: @options)
     |> handle_response
   end
 
   def post(coinbase, endpoint, body \\ []) do
     headers = get_headers(coinbase) |> Enum.concat(@form_header)
-    HTTPotion.post(@url <> endpoint, encode_params(body), headers, options: @options)
+    HTTPoison.post(@url <> endpoint, encode_params(body), headers, options: @options)
     |> handle_response
   end
 
   def put(coinbase, endpoint, body \\ []) do
     headers = get_headers(coinbase) |> Enum.concat(@form_header)
-    HTTPotion.put(@url <> endpoint, encode_params(body), headers, options: @options)
+    HTTPoison.put(@url <> endpoint, encode_params(body), headers, options: @options)
     |> handle_response
   end
 
   def delete(coinbase, endpoint) do
     headers = get_headers(coinbase)
-    HTTPotion.delete(@url <> endpoint, headers, options: @options)
+    HTTPoison.delete(@url <> endpoint, headers, options: @options)
     |> handle_response
   end
 
   defp handle_response(response) do
-    case HTTPotion.Response.success?(response) do
+    case HTTPoison.Response.success?(response) do
       true ->
         {:ok, response.body}
       false ->
@@ -47,9 +47,9 @@ defmodule Coinbase.API.Http do
 
   def encode_params(params, header) when is_list(params) do
     params
-    |> Enum.map(&get_param_string(%1, header))
+    |> Enum.map(&get_param_string(&1, header))
     |> Enum.filter(fn(x) -> x != nil end)
-                                  |> Enum.join("&")
+    |> Enum.join("&")
   end
 
   def get_param_string({_, nil}, _) do
