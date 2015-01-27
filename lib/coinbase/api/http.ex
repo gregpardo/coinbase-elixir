@@ -1,30 +1,37 @@
 defmodule Coinbase.API.Http do
+  alias Coinbase.Util.Crypt
+  use Timex
+
   @moduledoc false
   @form_header ["Content-Type": "application/json"]
   @url "https://api.coinbase.com/v1/"
   @options [timeout: 10000]
 
+  def url(endpoint) do
+    @url <> endpoint
+  end
+
   def get(coinbase, endpoint) do
-    headers = get_headers(coinbase)
-    HTTPoison.get(@url <> endpoint, headers, options: @options)
+    headers = get_headers(coinbase, url(endpoint), nil)
+    HTTPoison.get(url(endpoint), headers, options: @options)
     |> handle_response
   end
 
   def post(coinbase, endpoint, body \\ []) do
-    headers = get_headers(coinbase) |> Enum.concat(@form_header)
-    HTTPoison.post(@url <> endpoint, encode_params(body), headers, options: @options)
+    headers = get_headers(coinbase, url(endpoint), body) |> Enum.concat(@form_header)
+    HTTPoison.post(url(endpoint), encode_params(body), headers, options: @options)
     |> handle_response
   end
 
   def put(coinbase, endpoint, body \\ []) do
-    headers = get_headers(coinbase) |> Enum.concat(@form_header)
-    HTTPoison.put(@url <> endpoint, encode_params(body), headers, options: @options)
+    headers = get_headers(coinbase, url(endpoint), body) |> Enum.concat(@form_header)
+    HTTPoison.put(url(endpoint), encode_params(body), headers, options: @options)
     |> handle_response
   end
 
   def delete(coinbase, endpoint) do
-    headers = get_headers(coinbase)
-    HTTPoison.delete(@url <> endpoint, headers, options: @options)
+    headers = get_headers(coinbase, url(endpoint), nil)
+    HTTPoison.delete(url(endpoint), headers, options: @options)
     |> handle_response
   end
 
@@ -81,13 +88,20 @@ defmodule Coinbase.API.Http do
     "#{header}[#{key}]=#{value}"
   end
 
-  defp get_headers(coinbase) do
+  defp get_headers(coinbase, full_url, body) do
     api_key = Coinbase.api_key(coinbase)
     api_secret = Coinbase.api_secret(coinbase)
-    # TODO: Figure out how to make these
-    api_signature = ""
-    api_nonce = ""
-    ["User-Agent": "Elixir", "Connection": "close", "Host": "coinbase.com", "ACCESS_KEY": "#{api_key}", "ACCESS_SIGNATURE": api_signature, "ACCESS_NONCE": api_nonce ]
+    api_nonce = Integer.to_string(Date.now(:secs))
+    # This is how coinbase generates the hmac
+    api_message = api_nonce <> full_url
+    unless body == nil do
+      api_message = api_message <> body
+    end
+    api_signature = Crypt.hmac(api_secret, api_message)
+    IO.puts(inspect api_secret)
+    IO.puts(inspect api_message)
+    IO.puts(inspect api_signature)
+    ["User-Agent": "Elixir", "Connection": "close", "Host": "coinbase.com", "ACCESS_KEY": "#{api_key}", "ACCESS_SIGNATURE": "#{api_signature}", "ACCESS_NONCE": "#{api_nonce}" ]
   end
 
   defp struct_to_list(struct) do
