@@ -18,14 +18,14 @@ defmodule Coinbase.API.Http do
   end
 
   def post(coinbase, endpoint, body \\ []) do
-    headers = get_headers(coinbase, url(endpoint), body) |> Enum.concat(@form_header)
-    HTTPoison.post(url(endpoint), encode_params(body), headers, options: @options)
+    headers = get_headers(coinbase, url(endpoint), encode_body(body)) |> Enum.concat(@form_header)
+    HTTPoison.post(url(endpoint), encode_body(body), headers, options: @options)
     |> handle_response
   end
 
   def put(coinbase, endpoint, body \\ []) do
-    headers = get_headers(coinbase, url(endpoint), body) |> Enum.concat(@form_header)
-    HTTPoison.put(url(endpoint), encode_params(body), headers, options: @options)
+    headers = get_headers(coinbase, url(endpoint), encode_body(body)) |> Enum.concat(@form_header)
+    HTTPoison.put(url(endpoint), encode_body(body), headers, options: @options)
     |> handle_response
   end
 
@@ -104,6 +104,10 @@ defmodule Coinbase.API.Http do
 
   defp struct_to_list(struct) do
     Map.drop(struct, [:__struct__]) |> Map.to_list
+  end
+
+  defp encode_body(struct) do
+    JSX.encode!(struct)
   end
 end
 
