@@ -31,8 +31,9 @@ defmodule Coinbase.API.Base do
     |> to_response(struct, collection_name)
   end
 
-  def list(balanced, endpoint, limit, offset, struct, collection_name) do
-    Http.get(balanced, "#{endpoint}?limit=#{limit}&offset=#{offset}")
+  def list(balanced, endpoint, params, struct, collection_name) do
+    params = Http.encode_params(params)
+    Http.get(balanced, "#{endpoint}?#{params}")
     |> to_response(struct, collection_name)
   end
 
