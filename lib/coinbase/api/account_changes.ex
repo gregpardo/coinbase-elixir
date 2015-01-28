@@ -16,7 +16,4 @@ defmodule Coinbase.API.AccountChanges do
     end
     Base.list(coinbase, @endpoint, params, @data_struct, @collection_name)
   end
-
-
 end
-
