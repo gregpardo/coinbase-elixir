@@ -17,14 +17,14 @@ defmodule Coinbase.Mixfile do
 
   defp app_list(:dev), do: [:dotenv | app_list]
   defp app_list(_), do: app_list
-  defp app_list, do: [:httpoison, :exjsx, :timex, :logger]
+  defp app_list, do: [:httpoison, :poison, :timex, :logger]
 
 
   defp deps do
     [
       {:dotenv, "~> 0.0.4"},
       {:httpoison, "~> 0.6.0"},
-      {:exjsx, "~> 3.1.0"},
+      {:poison, "~> 1.3.1"},
       {:timex, "~> 0.13.3"}
     ]
   end

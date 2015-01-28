@@ -3,37 +3,41 @@ defmodule Coinbase.API.Base do
 
   @moduledoc false
 
-  def get(balanced, endpoint, id, struct, collection_name) do
-    Http.get(balanced, "#{endpoint}/#{id}")
+  def get(coinbase, endpoint, struct, collection_name) do
+    Http.get(coinbase, "#{endpoint}")
     |> to_response(struct, collection_name)
   end
 
-  def post(balanced, endpoint, data, struct, collection_name) do
-    Http.post(balanced, endpoint, data)
+  def get(coinbase, endpoint, id, struct, collection_name) do
+    get(coinbase, "#{endpoint}/#{id}", struct, collection_name)
+  end
+
+  def post(coinbase, endpoint, data, struct, collection_name) do
+    Http.post(coinbase, endpoint, data)
     |> to_response(struct, collection_name)
   end
 
-  def post(balanced, endpoint, struct, collection_name) do
-    post(balanced, endpoint, %{}, struct, collection_name)
+  def post(coinbase, endpoint, struct, collection_name) do
+    post(coinbase, endpoint, %{}, struct, collection_name)
   end
 
-  def put(balanced, endpoint, data, struct, collection_name) do
-    Http.put(balanced, endpoint, data)
+  def put(coinbase, endpoint, data, struct, collection_name) do
+    Http.put(coinbase, endpoint, data)
     |> to_response(struct, collection_name)
   end
 
-  def put(balanced, endpoint, struct, collection_name) do
-    put(balanced, endpoint, %{}, struct, collection_name)
+  def put(coinbase, endpoint, struct, collection_name) do
+    put(coinbase, endpoint, %{}, struct, collection_name)
   end
 
-  def delete(balanced, endpoint, id, struct, collection_name) do
-    Http.delete(balanced, "#{endpoint}/#{id}")
+  def delete(coinbase, endpoint, id, struct, collection_name) do
+    Http.delete(coinbase, "#{endpoint}/#{id}")
     |> to_response(struct, collection_name)
   end
 
-  def list(balanced, endpoint, params, struct, collection_name) do
+  def list(coinbase, endpoint, params, struct, collection_name) do
     params = Http.encode_params(params)
-    Http.get(balanced, "#{endpoint}?#{params}")
+    Http.get(coinbase, "#{endpoint}?#{params}")
     |> to_response(struct, collection_name)
   end
 
@@ -46,11 +50,16 @@ defmodule Coinbase.API.Base do
   end
 
   def to_response({status, response}, struct, collection_name) do
-    { status, decode_response(response, collection_name, struct) }
+    { status, decode_response(response, struct, collection_name) }
   end
 
-  defp decode_response(response, collection_name, struct) do
-      JSX.decode!(response)
+  defp decode_response(response, struct, collection_name) do
+      map_prototype = Map.new()
+      |> Map.put(collection_name, [struct])
+      |> Map.put("links", [Map])
+      |> Map.put("errors", [Coinbase.Error])
+
+      Poison.decode!(response, keys: :atoms, as: map_prototype)
   end
 
 end
