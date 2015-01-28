@@ -62,4 +62,10 @@ defmodule Coinbase.API.Base do
       Poison.decode!(response, keys: :atoms, as: map_prototype)
   end
 
+
+  def optional_param(map, name, param) do
+    unless param == nil do 
+      Map.put(map, name, param)
+    end
+  end
 end
