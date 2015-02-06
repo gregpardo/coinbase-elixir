@@ -40,7 +40,7 @@ defmodule Coinbase do
   @doc """
   Creates a new Coinbase process
   """
-@spec new({binary, binary}) :: { Coinbase.status, pid }
+  @spec new({binary, binary}) :: { Coinbase.status, pid }
   def new({api_key, api_secret}) do
     start_link(%Config{api_key: api_key, api_secret: api_secret})
   end
@@ -48,7 +48,7 @@ defmodule Coinbase do
   @doc """
   Creates a Coinbase process, reading the key and secret from config or environment variables
   """
-@spec new() :: {Coinbase.status, pid}
+  @spec new() :: {Coinbase.status, pid}
   def new() do
     api_key = Application.get_env(:coinbase, :api_key, System.get_env("COINBASE_API_KEY"))
     api_secret = Application.get_env(:coinbase, :api_secret, System.get_env("COINBASE_API_SECRET"))
@@ -62,7 +62,7 @@ defmodule Coinbase do
   @doc """
   Returns the API key
   """
-@spec api_key(pid) :: binary
+  @spec api_key(pid) :: binary
   def api_key(coinbase) do
     configuration(coinbase).api_key
   end
@@ -70,7 +70,7 @@ defmodule Coinbase do
   @doc """
   Returns the API secret
   """
-@spec api_secret(pid) :: binary
+  @spec api_secret(pid) :: binary
   def api_secret(coinbase) do
     configuration(coinbase).api_secret
   end
@@ -78,7 +78,7 @@ defmodule Coinbase do
   @doc """
   Returns the Coinbase config struct
   """
-@spec configuration(pid) :: Coinbase.Config.t
+  @spec configuration(pid) :: Coinbase.Config.t
   def configuration(coinbase) do
     GenServer.call(coinbase, :get_configuration)
   end
@@ -92,4 +92,3 @@ defmodule Coinbase do
     {:reply, config, config}
   end
 end
-
