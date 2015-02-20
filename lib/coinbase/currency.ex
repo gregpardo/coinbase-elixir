@@ -1,7 +1,7 @@
 defmodule Coinbase.Currency do
-  @type t :: %Coinbase.Contact {
-            name: string
-            abbreviation: string
+  @type t :: %Coinbase.Currency {
+            name: binary,
+            abbreviation: binary
         }
 
   defstruct [

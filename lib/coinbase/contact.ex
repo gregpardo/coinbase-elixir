@@ -1,6 +1,6 @@
 defmodule Coinbase.Contact do
   @type t :: %Coinbase.Contact {
-            email: string
+            email: binary
         }
 
   defstruct [
