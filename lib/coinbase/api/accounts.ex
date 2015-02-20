@@ -1,5 +1,6 @@
 defmodule Coinbase.API.Accounts do
   alias Coinbase.API.Base
+  import Coinbase.Util.Params
 
   @endpoint "accounts"
   @data_struct Coinbase.Account
@@ -8,11 +9,15 @@ defmodule Coinbase.API.Accounts do
 
   @doc """
   Gets a list of accounts
-  Allows for optional page, limit and all_accounts parameters
+
+  Optional params:
+    page (integer): Can be used to page through results. Default value is 1.
+    limit (integer): Number of records to return. Maximum is 1000. Default value is 25.
+    all_accounts (integer): Set this to true to also list inactive accounts.
   """
-  @spec list(pid, number, number, boolean) :: Coinbase.response
-  def list(coinbase, limit \\ 25, page \\ 1, all_accounts \\ false) do
-    params = %{limit: limit, page: page, all_accounts: all_accounts}
+  @spec list(pid, map) :: Coinbase.response
+  def list(coinbase, optionals \\ %{}) do
+    params = add_optionals(%{}, optionals)
     Base.list(coinbase, @endpoint, params, @data_struct, @collection_name)
   end
 
@@ -53,8 +58,10 @@ defmodule Coinbase.API.Accounts do
   Create a new bitcoin address for an account
   """
   @spec create_address(pid, binary, binary, binary) :: Coinbase.response
-  def create_address(coinbase, id, callback_url, label) do
-    address = %{address: %{callback_url: callback_url, label: label}}
+  def create_address(coinbase, id, callback_url \\ :undefined, label \\ :undefined) do
+    sub_params = %{callback_url: callback_url, label: label}
+    sub_params = add_optionals(%{}, sub_params)
+    address = %{address: sub_params}
     Base.post(coinbase, "#{@endpoint}/#{id}/address", address, @address_struct, @collection_name)
   end
 

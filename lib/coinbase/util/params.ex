@@ -11,9 +11,8 @@ defmodule Coinbase.Util.Params do
   Ignores pairs with value of :undefined
   """
   @spec add_optionals(map, map) :: map
-  def add_optionals(params, optional) when is_map(optional) do
-    list = Dict.to_list(optional)
-    IO.puts inspect(list)
+  def add_optionals(params, optionals \\ %{}) when is_map(optionals) do
+    list = Dict.to_list(optionals)
     params |> add_optionals_list(list)
   end
 
@@ -23,8 +22,6 @@ defmodule Coinbase.Util.Params do
 
   defp add_optionals_list(params, [head | tail]) do
     {key, value} = head
-    IO.puts key
-    IO.puts value
     params
       |> add_optional(key, value)
       |> add_optionals_list(tail)
