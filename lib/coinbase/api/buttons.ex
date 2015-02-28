@@ -1,5 +1,6 @@
 defmodule Coinbase.API.Buttons do
   alias Coinbase.API.Base
+  import Coinbase.Util.Params
 
   @endpoint "buttons"
   @data_struct Coinbase.Button
@@ -8,12 +9,15 @@ defmodule Coinbase.API.Buttons do
 
   @doc """
   Create a new payment button, page, or iFrame
+
+  Optional params:
+    account_id (string): Specify for which account is the order created. The default is your primary account
   """
-  @spec create(pid, binary, binary) :: Coinbase.response
-  def create(coinbase, button, account_id \\ nil) do
-    data = %{button: button}
-    data = Base.optional_param(data, "account_id", account_id)
-    Base.post(coinbase, @endpoint, data, @data_struct, @collection_name)
+  @spec create(pid, binary, map) :: Coinbase.response
+  def create(coinbase, button, optionals \\ %{}) do
+    params = %{button: button}
+    params = add_optionals(params, optionals)
+    Base.post(coinbase, @endpoint, params, @data_struct, @collection_name)
   end
 
   @doc """

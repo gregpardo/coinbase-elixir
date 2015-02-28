@@ -1,5 +1,6 @@
 defmodule Coinbase.API.Addresses do
   alias Coinbase.API.Base
+  import Coinbase.Util.Params
 
   @endpoint "addresses"
   @data_struct Coinbase.Address
@@ -7,12 +8,16 @@ defmodule Coinbase.API.Addresses do
 
   @doc """
   Lists bitcoin addresses
+
+  Optional params:
+    page (integer): Can be used to page through results. Default value is 1.
+    limit (integer): Number of records to return. Maximum is 1000. Default value is 25.
+    account_id (string): Specify which account is used for fetching data. The default is your primary account
+    query (string): Optional string match to filter addresses. 
   """
-  @spec list(pid, number, number, binary) :: Coinbase.response
-  def list(coinbase, limit \\ 25, page \\ 1, account_id \\ nil, query \\ nil) do
-    params = %{limit: limit, page: page}
-    params = Base.optional_param(params, "account_id", account_id)
-    params = Base.optional_param(params, "query", query)
+  @spec list(pid, map) :: Coinbase.response
+  def list(coinbase, optionals \\ %{}) do
+    params = add_optionals(%{}, optionals)
     Base.list(coinbase, @endpoint, params, @data_struct, @collection_name)
   end
 
