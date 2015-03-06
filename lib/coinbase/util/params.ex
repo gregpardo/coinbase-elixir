@@ -1,5 +1,5 @@
 defmodule Coinbase.Util.Params do
-  
+
   @moduledoc """
   A utility class to help with parameters
   Adds support for adding additional parameters to a map

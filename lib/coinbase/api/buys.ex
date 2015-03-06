@@ -1,9 +1,9 @@
-defmodule Coinbase.API.Buy do
+defmodule Coinbase.API.Buys do
   alias Coinbase.API.Base
   import Coinbase.Util.Params
 
   @endpoint "buys"
-  @data_struct Coinbase.Authorization
+  @data_struct Coinbase.Transfer
   @collection_name String.to_atom(@endpoint)
 
   @doc """
