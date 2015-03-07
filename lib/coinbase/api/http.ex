@@ -8,7 +8,8 @@ defmodule Coinbase.API.Http do
   @options [timeout: 10000]
 
   def url(endpoint) do
-    @url <> endpoint
+    url = @url <> endpoint
+    url |> String.rstrip(??) # If params are empty make sure to strip the ?
   end
 
   def get(coinbase, endpoint) do
@@ -93,10 +94,13 @@ defmodule Coinbase.API.Http do
     api_secret = Coinbase.api_secret(coinbase)
     api_nonce = Integer.to_string(Date.now(:secs))
     # This is how coinbase generates the hmac
+    IO.puts full_url
     api_message = api_nonce <> full_url
     # Only append body if neccessary
     unless body == nil do
       api_message = api_message <> body
+    else
+      api_message = api_message <> ""
     end
     api_signature = Crypt.hmac(api_secret, api_message)
     ["User-Agent": "Elixir", "Connection": "close", "Host": "coinbase.com", "ACCESS_KEY": "#{api_key}", "ACCESS_SIGNATURE": "#{api_signature}", "ACCESS_NONCE": "#{api_nonce}" ]

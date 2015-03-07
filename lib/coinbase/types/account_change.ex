@@ -1,5 +1,5 @@
-defmodule Coinbase.AccountChanges do
-  @type t :: %Coinbase.AccountChanges {
+defmodule Coinbase.AccountChange do
+  @type t :: %Coinbase.AccountChange {
     id: binary,
     created_at: binary,
     transaction_id: binary,

@@ -13,7 +13,7 @@ defmodule Coinbase.API.Buttons do
   Optional params:
     account_id (string): Specify for which account is the order created. The default is your primary account
   """
-  @spec create(pid, binary, map) :: Coinbase.response
+  @spec create(pid, map, map) :: Coinbase.response
   def create(coinbase, button, optionals \\ %{}) do
     params = %{button: button}
     params = add_optionals(params, optionals)

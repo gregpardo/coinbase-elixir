@@ -118,4 +118,29 @@ defmodule Coinbase.API.Transactions do
     Base.put(coinbase, "#{@endpoint}/#{id}/cancel_request", params, @data_struct, @collection_name)
   end
 
+  @doc """
+  Get signature hashes for each input that needs signing in a spend from multisig transaction
+  (multisig)
+
+  Optional params:
+    account_id (string): Specify which account is used for fetching data. The default is your primary account.
+  """
+  @spec sighashes(pid, binary, map) :: Coinbase.response
+  def sighashes(coinbase, id, optionals \\ %{}) do
+    params = add_optionals(%{}, optionals)
+    Base.get(coinbase, "#{@endpoint}/#{id}/sighashes", params, @data_struct, @collection_name)
+  end
+
+  @doc """
+  Submit required signatures for a multisig spend transaction
+  (multisig)
+
+  'signatures' object is an list of Coinbase.Signature
+  """
+  @spec signatures(pid, binary, map) :: Coinbase.response
+  def signatures(coinbase, id, signatures) do
+    params = %{signatures: signatures}
+    Base.put(coinbase, "#{@endpoint}/#{id}/signatures", params, @data_struct, @collection_name)
+  end
+
 end

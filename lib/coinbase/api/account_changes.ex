@@ -2,7 +2,7 @@ defmodule Coinbase.API.AccountChanges do
   alias Coinbase.API.Base
 
   @endpoint "account_changes"
-  @data_struct Coinbase.AccountChanges
+  @data_struct Coinbase.AccountChange
   @collection_name String.to_atom(@endpoint)
 
   @doc """
