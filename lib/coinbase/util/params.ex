@@ -12,6 +12,7 @@ defmodule Coinbase.Util.Params do
   """
   @spec add_optionals(map, map) :: map
   def add_optionals(params, optionals \\ %{}) when is_map(optionals) do
+    params = strip_undefined(params)
     optionals = strip_undefined(optionals)
     Dict.merge(params, optionals, fn(_k, v1, v2) ->
       cond do
