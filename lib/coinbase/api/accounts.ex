@@ -30,12 +30,18 @@ defmodule Coinbase.API.Accounts do
   end
 
   @doc """
-  Create an account
+  Create an account (supports multisig)
+
+  Optional params:
+    account[type] (string): Type of account. If creating a HDM (multisig) account, specify multisig.
+    account[m] (string): Number of required signatures to spend from HDM multisig account.
+    account[xpubkeys] (array): Array of extended public keys of BIP32 wallets. Length of array must be greater or equal than 'm' to create a complete account.
   """
-  @spec create(pid, binary) :: Coinbase.response
-  def create(coinbase, name) do
-    data = %{account: %{name: name}}
-    Base.post(coinbase, @endpoint, data, @data_struct, @collection_name)
+  @spec create(pid, binary, map) :: Coinbase.response
+  def create(coinbase, name, optionals \\ %{}) do
+    params = %{account: %{name: name}}
+    params = add_optionals(params, optionals)
+    Base.post(coinbase, @endpoint, params, @data_struct, @collection_name)
   end
 
   @doc """

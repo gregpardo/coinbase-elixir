@@ -3,13 +3,17 @@ defmodule Coinbase.API.Base do
 
   @moduledoc false
 
-  def get(coinbase, endpoint, struct, collection_name) do
-    Http.get(coinbase, "#{endpoint}")
+  def get(coinbase, endpoint, id, data, struct, collection_name) do
+    get(coinbase, "#{endpoint}/#{id}", data, struct, collection_name)
+  end
+
+  def get(coinbase, endpoint, data, struct, collection_name) when is_map(data) do
+    Http.get(coinbase, "#{endpoint}", data)
     |> to_response(struct, collection_name)
   end
 
-  def get(coinbase, endpoint, id, struct, collection_name) do
-    get(coinbase, "#{endpoint}/#{id}", struct, collection_name)
+  def get(coinbase, endpoint, id, struct, collection_name) when is_binary(id) do
+    get(coinbase, "#{endpoint}/#{id}", %{}, struct, collection_name)
   end
 
   def post(coinbase, endpoint, data, struct, collection_name) do
