@@ -12,32 +12,44 @@ defmodule Coinbase.Util.Params do
   """
   @spec add_optionals(map, map) :: map
   def add_optionals(params, optionals \\ %{}) when is_map(optionals) do
-    list = Dict.to_list(optionals)
-    params |> add_optionals_list(list)
+    optionals = strip_undefined(optionals)
+    Dict.merge(params, optionals, fn(_k, v1, v2) ->
+      cond do
+        is_map(v1) && is_map(v2) ->
+          add_optionals(v1, v2)
+        true ->
+          v2
+      end
+    end)
   end
 
-  defp add_optionals_list(params, []) do
-    params
+  defp handle_values(v1, v2) when is_map(v1) and is_map(v2) do
+    add_optionals(v1, v2)
   end
 
-  defp add_optionals_list(params, [head | tail]) do
-    {key, value} = head
-    params
-      |> add_optional(key, value)
-      |> add_optionals_list(tail)
+  defp strip_undefined(dict) when is_map(dict) do
+    check_keys_for_undefined(dict, Dict.keys(dict))
   end
 
-  @doc """
-  Takes a map and adds optional map params into it
-  Ignores pairs with value of :undefined
-  """
-  @spec add_optional(map, binary, binary) :: map
-  def add_optional(params, key, value) when is_atom(key) do
-    case value do
-      :undefined ->
-        params
-      _ ->
-        params |> Dict.put(key, value)
+  defp check_keys_for_undefined(dict, [head | tail]) do
+    dict = check_key_for_undefined(dict, head)
+    check_keys_for_undefined(dict, tail)
+  end
+
+  defp check_keys_for_undefined(dict, []) do
+    dict
+  end
+
+  defp check_key_for_undefined(dict, key) do
+    value = Dict.get(dict, key)
+    if value == :undefined do
+      Dict.delete(dict, key)
+    else
+      if is_map(value) do
+        Dict.put(dict, key, strip_undefined(value))
+      else
+        dict
+      end
     end
   end
 end
