@@ -11,5 +11,4 @@ defmodule Coinbase.API.Authorization do
   def get(coinbase) do
     Base.get(coinbase, @endpoint, @data_struct, @collection_name)
   end
-
 end

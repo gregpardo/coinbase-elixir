@@ -58,14 +58,24 @@ defmodule Coinbase.API.Base do
     { status, decode_response(response, struct, collection_name) }
   end
 
+  defp decode_response(response, atom, collection_name) when is_atom(atom) and atom == :none do
+    Poison.Parser.parse!(response, keys: :atoms)
+  end
+
   defp decode_response(response, struct, collection_name) do
-      map_prototype = Map.new()
+    map_prototype = Map.new()
       |> Map.put(collection_name, [struct])
       |> Map.put("links", [Map])
       |> Map.put("errors", [Coinbase.Error])
 
-      Poison.decode!(response, keys: :atoms, as: map_prototype)
+    case map_prototype do
+      :none ->
+        Poison.Parser.parse!(response, keys: :atoms)
+      _ ->
+        Poison.decode!(response, keys: :atoms, as: map_prototype)
+    end
   end
+
 
 
   def optional_param(map, name, param) do

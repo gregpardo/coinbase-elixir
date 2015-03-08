@@ -15,7 +15,7 @@ defmodule Coinbase.Refund do
     :amount_btc,
     :amount_native,
     :transfer_id,
-    :transfer_id,
+    :transaction_id,
     :refundable
     ]
 end

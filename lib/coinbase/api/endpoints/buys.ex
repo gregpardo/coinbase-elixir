@@ -21,5 +21,4 @@ defmodule Coinbase.API.Buys do
     params = add_optionals(params, optionals)
     Base.post(coinbase, @endpoint, params, @data_struct, @collection_name)
   end
-
 end

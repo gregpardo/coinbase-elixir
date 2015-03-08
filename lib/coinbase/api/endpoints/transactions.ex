@@ -142,5 +142,4 @@ defmodule Coinbase.API.Transactions do
     params = %{signatures: signatures}
     Base.put(coinbase, "#{@endpoint}/#{id}/signatures", params, @data_struct, @collection_name)
   end
-
 end

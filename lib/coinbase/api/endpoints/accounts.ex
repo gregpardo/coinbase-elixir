@@ -63,12 +63,10 @@ defmodule Coinbase.API.Accounts do
   @doc """
   Create a new bitcoin address for an account
   """
-  @spec create_address(pid, binary, binary, binary) :: Coinbase.response
-  def create_address(coinbase, id, callback_url \\ :undefined, label \\ :undefined) do
-    sub_params = %{callback_url: callback_url, label: label}
-    sub_params = add_optionals(%{}, sub_params)
-    address = %{address: sub_params}
-    Base.post(coinbase, "#{@endpoint}/#{id}/address", address, @address_struct, @collection_name)
+  @spec create_address(pid, binary,  map) :: Coinbase.response
+  def create_address(coinbase, account_id, optionals \\ %{}) do
+    params = add_optionals(%{}, optionals)
+    Base.post(coinbase, "#{@endpoint}/#{account_id}/address", params, @address_struct, @collection_name)
   end
 
   @doc """

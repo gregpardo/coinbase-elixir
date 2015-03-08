@@ -58,5 +58,4 @@ defmodule Coinbase.API.Orders do
     params = add_optionals(%{}, optionals)
     Base.post(coinbase, "#{@endpoint}/#{id_or_custom_field}/refund", params, @data_struct, @collection_name)
   end
-
 end

@@ -35,5 +35,4 @@ defmodule Coinbase.API.Applications do
     params = %{application: %{name: name, redirect_uri: redirect_uri}}
     Base.post(coinbase, @endpoint, params, @data_struct, @collection_name)
   end
-
 end

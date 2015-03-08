@@ -22,5 +22,4 @@ defmodule Coinbase.API.Tokens do
     params = %{token_id: token_id}
     Base.post(coinbase, "#{@endpoint}/redeem", params, @data_struct, @collection_name)
   end
-
 end

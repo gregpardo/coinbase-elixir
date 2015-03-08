@@ -44,7 +44,7 @@ defmodule Coinbase.API.Reports do
   """
   @spec create(pid, map, map) :: Coinbase.response
   def create(coinbase, report, optionals \\ %{}) do
-    params = %{report: button}
+    params = %{report: report}
     params = add_optionals(params, optionals)
     Base.post(coinbase, @endpoint, params, @data_struct, @collection_name)
   end

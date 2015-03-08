@@ -20,9 +20,13 @@ defmodule Coinbase.API.Subscriptions do
 
   @doc """
   Show a subscription
+
+  Optional params:
+    account_id (string): Specify which account is used for fetching data. The default is your primary account
   """
-  @spec get(pid, binary) :: Coinbase.response
-  def get(coinbase, id) do
-    Base.get(coinbase, @endpoint, id, @data_struct, @collection_name)
+  @spec get(pid, binary, map) :: Coinbase.response
+  def get(coinbase, id, optionals) do
+    params = add_optionals(%{}, optionals)
+    Base.get(coinbase, @endpoint, id, params, @data_struct, @collection_name)
   end
 end
