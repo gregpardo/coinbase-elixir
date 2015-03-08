@@ -6,3 +6,6 @@ erl_crash.dump
 \#*
 .#*
 \#*\#
+/config
+/docs
+/cover

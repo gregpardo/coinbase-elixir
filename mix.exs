@@ -25,7 +25,10 @@ defmodule Coinbase.Mixfile do
       {:dotenv, "~> 0.0.4"},
       {:httpoison, "~> 0.6.0"},
       {:poison, "~> 1.3.1"},
-      {:timex, "~> 0.13.3"}
+      {:timex, "~> 0.13.3"},
+      {:exvcr, "~> 0.3.5", only: :test},
+      {:earmark, "~> 0.1", only: :dev},
+      {:ex_doc, "~> 0.6", only: :dev}
     ]
   end
 
