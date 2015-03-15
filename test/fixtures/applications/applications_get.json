@@ -1,0 +1,25 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "User-Agent": "Elixir",
+        "Connection": "close",
+        "Host": "coinbase.com",
+        "Content-Type": "application/json",
+        "ACCESS_KEY": "api_key"
+      },
+      "method": "get",
+      "options": [],
+      "url": "https://api.coinbase.com/v1/oauth/applications/52fe8cf2137f733087000002"
+    },
+    "response": {
+      "body": "{\n  \"application\": {\n    \"id\": \"5302ebdb137f73dcf7000047\",\n    \"created_at\": \"2014-02-17T21:12:59-08:00\",\n    \"name\": \"Test App 3\",\n    \"redirect_uri\": \"http://example.com\",\n    \"num_users\": 0\n  }\n}",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

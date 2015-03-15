@@ -4,7 +4,7 @@ defmodule Coinbase.API.Withdrawals do
 
   @endpoint "withdrawals"
   @data_struct Coinbase.Transfer
-  @collection_name String.to_atom(@endpoint)
+  @search_key String.to_atom(@endpoint)
 
   @doc """
   Withdraw USD or EUR
@@ -16,6 +16,6 @@ defmodule Coinbase.API.Withdrawals do
   def withdraw(coinbase, account_id, payment_method_id, amount, optionals \\ %{}) do
     params = %{account_id: account_id, payment_method_id: payment_method_id, amount: amount}
     params = add_optionals(params, optionals)
-    Base.post(coinbase, @endpoint, params, @data_struct, @collection_name)
+    Base.post(coinbase, @endpoint, params, @data_struct, @search_key)
   end
 end

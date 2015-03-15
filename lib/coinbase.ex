@@ -40,8 +40,8 @@ defmodule Coinbase do
   @doc """
   Creates a new Coinbase process
   """
-  @spec new({binary, binary}) :: { Coinbase.status, pid }
-  def new({api_key, api_secret}) do
+  @spec new(binary, binary) :: { Coinbase.status, pid }
+  def new(api_key, api_secret) do
     start_link(%Config{api_key: api_key, api_secret: api_secret})
   end
 
@@ -50,9 +50,17 @@ defmodule Coinbase do
   """
   @spec new() :: {Coinbase.status, pid}
   def new() do
-    api_key = Application.get_env(:coinbase, :api_key, System.get_env("COINBASE_API_KEY"))
-    api_secret = Application.get_env(:coinbase, :api_secret, System.get_env("COINBASE_API_SECRET"))
-    new({api_key, api_secret})
+    api_key = default_api_key
+    api_secret = default_api_secret
+    new(api_key, api_secret)
+  end
+
+  defp default_api_key do
+    Application.get_env(:coinbase, :api_key, System.get_env("COINBASE_API_KEY"))
+  end
+
+  defp default_api_secret do
+    Application.get_env(:coinbase, :api_secret, System.get_env("COINBASE_API_SECRET"))
   end
 
   def start_link(config) do

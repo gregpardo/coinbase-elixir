@@ -1,0 +1,25 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "User-Agent": "Elixir",
+        "Connection": "close",
+        "Host": "coinbase.com",
+        "Content-Type": "application/json",
+        "ACCESS_KEY": "api_key"
+      },
+      "method": "get",
+      "options": [],
+      "url": "https://api.coinbase.com/v1/authorization"
+    },
+    "response": {
+      "body": "{\n    \"auth_type\": \"oauth\",\n    \"meta\": {\n        \"send_limit_period\": \"month\",\n        \"send_limit_currency\": \"USD\",\n        \"send_limit_amount\": \"500\"\n    },\n    \"scopes\": [\n        \"user\",\n        \"balance\",\n        \"send\"\n    ]\n}",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

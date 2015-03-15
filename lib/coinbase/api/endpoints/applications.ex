@@ -3,8 +3,8 @@ defmodule Coinbase.API.Applications do
   import Coinbase.Util.Params
 
   @endpoint "oauth/applications"
-  @data_struct Coinbase.Application
-  @collection_name :applications
+  @as_application Coinbase.Application
+  @as_key_application :application
 
   @doc """
   List OAuth applications
@@ -16,7 +16,8 @@ defmodule Coinbase.API.Applications do
   @spec list(pid, map) :: Coinbase.response
   def list(coinbase, optionals \\ %{}) do
     params = add_optionals(%{}, optionals)
-    Base.list(coinbase, @endpoint, params, @data_struct, @collection_name)
+    options = %{as: @as_application, as_key: @as_key_application, params: params}
+    Base.list(coinbase, @endpoint, options)
   end
 
   @doc """
@@ -24,15 +25,17 @@ defmodule Coinbase.API.Applications do
   """
   @spec get(pid, binary) :: Coinbase.response
   def get(coinbase, id) do
-    Base.get(coinbase, @endpoint, id, @data_struct, @collection_name)
+    options = %{as: @as_application, as_key: @as_key_application}
+    Base.get(coinbase, "#{@endpoint}/#{id}", options)
   end
 
   @doc """
   Create an OAuth application
   """
-  @spec create(pid, binary, binary) :: Coinbase.response
-  def create(coinbase, name, redirect_uri) do
-    params = %{application: %{name: name, redirect_uri: redirect_uri}}
-    Base.post(coinbase, @endpoint, params, @data_struct, @collection_name)
+  @spec create(pid, map) :: Coinbase.response
+  def create(coinbase, application) do
+    body = %{application: application}
+    options = %{as: @as_application, as_key: @as_key_application, body: body}
+    Base.post(coinbase, @endpoint, options)
   end
 end

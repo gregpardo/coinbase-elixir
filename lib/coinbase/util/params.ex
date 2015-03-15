@@ -24,10 +24,6 @@ defmodule Coinbase.Util.Params do
     end)
   end
 
-  defp handle_values(v1, v2) when is_map(v1) and is_map(v2) do
-    add_optionals(v1, v2)
-  end
-
   defp strip_undefined(dict) when is_map(dict) do
     check_keys_for_undefined(dict, Dict.keys(dict))
   end

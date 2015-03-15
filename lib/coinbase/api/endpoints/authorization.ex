@@ -1,14 +1,16 @@
 defmodule Coinbase.API.Authorization do
+  alias Coinbase.API.Base
 
   @endpoint "authorization"
-  @data_struct Coinbase.Authorization
-  @collection_name String.to_atom(@endpoint)
+  @as_authorization Coinbase.Authorization
+  @as_key_authorization :authorization
 
   @doc """
   Show authorization information
   """
   @spec get(pid) :: Coinbase.response
   def get(coinbase) do
-    Base.get(coinbase, @endpoint, @data_struct, @collection_name)
+    options = %{as: @as_authorization, as_key: @as_key_authorization}
+    Base.get(coinbase, @endpoint, options)
   end
 end

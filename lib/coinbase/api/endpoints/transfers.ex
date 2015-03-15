@@ -4,7 +4,7 @@ defmodule Coinbase.API.Transfer do
 
   @endpoint "transfers"
   @data_struct Coinbase.Transfer
-  @collection_name String.to_atom(@endpoint)
+  @search_key String.to_atom(@endpoint)
 
   @doc """
   List buy and sell history
@@ -17,7 +17,7 @@ defmodule Coinbase.API.Transfer do
   @spec list(pid, map) :: Coinbase.response
   def list(coinbase, optionals \\ %{}) do
     params = add_optionals(%{}, optionals)
-    Base.list(coinbase, @endpoint, params, @data_struct, @collection_name)
+    Base.list(coinbase, @endpoint, params, @data_struct, @search_key)
   end
 
   @doc """
@@ -29,7 +29,7 @@ defmodule Coinbase.API.Transfer do
   @spec get(pid, binary, map) :: Coinbase.response
   def get(coinbase, id, optionals \\ %{}) do
     params = add_optionals(%{}, optionals)
-    Base.get(coinbase, @endpoint, id, params, @data_struct, @collection_name)
+    Base.get(coinbase, @endpoint, id, params, @data_struct, @search_key)
   end
 
   @doc """
@@ -41,6 +41,6 @@ defmodule Coinbase.API.Transfer do
   @spec commit(pid, binary, map) :: Coinbase.response
   def commit(coinbase, id, optionals \\ %{}) do
     params = add_optionals(%{}, optionals)
-    Base.post(coinbase, "#{@endpoint}/#{id}/commit", params, @data_struct, @collection_name)
+    Base.post(coinbase, "#{@endpoint}/#{id}/commit", params, @data_struct, @search_key)
   end
 end

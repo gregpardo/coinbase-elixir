@@ -4,7 +4,7 @@ defmodule Coinbase.API.Reports do
 
   @endpoint "reports"
   @data_struct Coinbase.Report
-  @collection_name String.to_atom(@endpoint)
+  @search_key String.to_atom(@endpoint)
 
   @doc """
   Lists all reports
@@ -17,7 +17,7 @@ defmodule Coinbase.API.Reports do
   @spec list(pid, map) :: Coinbase.response
   def list(coinbase, optionals \\ %{}) do
     params = add_optionals(%{}, optionals)
-    Base.list(coinbase, @endpoint, params, @data_struct, @collection_name)
+    Base.list(coinbase, @endpoint, params, @data_struct, @search_key)
   end
 
   @doc """
@@ -25,7 +25,7 @@ defmodule Coinbase.API.Reports do
   """
   @spec get(pid, binary) :: Coinbase.response
   def get(coinbase, id) do
-    Base.get(coinbase, @endpoint, id, @data_struct, @collection_name)
+    Base.get(coinbase, @endpoint, id, @data_struct, @search_key)
   end
 
   @doc """
@@ -46,6 +46,6 @@ defmodule Coinbase.API.Reports do
   def create(coinbase, report, optionals \\ %{}) do
     params = %{report: report}
     params = add_optionals(params, optionals)
-    Base.post(coinbase, @endpoint, params, @data_struct, @collection_name)
+    Base.post(coinbase, @endpoint, params, @data_struct, @search_key)
   end
 end

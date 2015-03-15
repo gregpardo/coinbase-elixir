@@ -3,8 +3,8 @@ defmodule Coinbase.API.Addresses do
   import Coinbase.Util.Params
 
   @endpoint "addresses"
-  @data_struct Coinbase.Address
-  @collection_name String.to_atom(@endpoint)
+  @as_address Coinbase.Address
+  @as_key_address :address
 
   @doc """
   Lists bitcoin addresses
@@ -18,7 +18,8 @@ defmodule Coinbase.API.Addresses do
   @spec list(pid, map) :: Coinbase.response
   def list(coinbase, optionals \\ %{}) do
     params = add_optionals(%{}, optionals)
-    Base.list(coinbase, @endpoint, params, @data_struct, @collection_name)
+    options = %{as: @as_address, as_key: @as_key_address, params: params}
+    Base.list(coinbase, @endpoint, options)
   end
 
   @doc """
@@ -26,6 +27,7 @@ defmodule Coinbase.API.Addresses do
   """
   @spec get(pid, binary) :: Coinbase.response
   def get(coinbase, id) do
-    Base.get(coinbase, @endpoint, id, @data_struct, @collection_name)
+    options = %{as: @as_address, as_key: @as_key_address}
+    Base.get(coinbase, "#{@endpoint}/#{id}", options)
   end
 end

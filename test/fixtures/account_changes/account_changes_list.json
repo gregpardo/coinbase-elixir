@@ -1,0 +1,25 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "User-Agent": "Elixir",
+        "Connection": "close",
+        "Host": "coinbase.com",
+        "Content-Type": "application/json",
+        "ACCESS_KEY": "api_key"
+      },
+      "method": "get",
+      "options": [],
+      "url": "https://api.coinbase.com/v1/account_changes"
+    },
+    "response": {
+      "body": "{\n  \"current_user\": {\n    \"id\": \"524a75a3f8182b7d2a00000a\",\n    \"email\": \"user2@example.com\",\n    \"name\": \"User 2\"\n  },\n  \"balance\": {\n    \"amount\": \"50.00000000\",\n    \"currency\": \"BTC\"\n  },\n  \"native_balance\": {\n    \"amount\": \"500.00\",\n    \"currency\": \"USD\"\n  },\n  \"account_changes\": [\n    {\n      \"id\": \"524a75a3f8182b7d2a000018\",\n      \"created_at\": \"2013-10-01T00:11:31-07:00\",\n      \"transaction_id\": \"524a75a3f8182b7d2a000010\",\n      \"confirmed\": false,\n      \"cache\": {\n        \"notes_present\": false,\n        \"category\": \"tx\",\n        \"other_user\": {\n          \"id\": null,\n          \"name\": \"an external account\"\n        }\n      },\n      \"amount\": {\n        \"amount\": \"50.00000000\",\n        \"currency\": \"BTC\"\n      }\n    }\n  ],\n  \"total_count\": 1,\n  \"num_pages\": 1,\n  \"current_page\": 1\n}",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

@@ -4,14 +4,14 @@ defmodule Coinbase.API.Users do
 
   @endpoint "users"
   @data_struct Coinbase.User
-  @collection_name String.to_atom(@endpoint)
+  @search_key String.to_atom(@endpoint)
 
   @doc """
   Gets the current user
   """
   @spec get_current(pid) :: Coinbase.response
   def get_current(coinbase) do
-    Base.get(coinbase, "#{@endpoint}/self", %{}, @data_struct, @collection_name)
+    Base.get(coinbase, "#{@endpoint}/self", %{}, @data_struct, @search_key)
   end
 
   @doc """
@@ -28,7 +28,7 @@ defmodule Coinbase.API.Users do
   def create(coinbase, user, optionals \\ %{}) do
     params = %{user: user}
     params = add_optionals(params, optionals)
-    Base.post(coinbase, @endpoint, params, @data_struct, @collection_name)
+    Base.post(coinbase, @endpoint, params, @data_struct, @search_key)
   end
 
   @doc """
@@ -37,6 +37,6 @@ defmodule Coinbase.API.Users do
   @spec update(pid, binary, map) :: Coinbase.response
   def update(coinbase, id, user) do
     params = user
-    Base.put(coinbase, "#{@endpoint}/#{id}", user, @data_struct, @collection_name)
+    Base.put(coinbase, "#{@endpoint}/#{id}", params, @data_struct, @search_key)
   end
 end

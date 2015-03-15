@@ -1,0 +1,25 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "User-Agent": "Elixir",
+        "Connection": "close",
+        "Host": "coinbase.com",
+        "Content-Type": "application/json",
+        "ACCESS_KEY": "api_key"
+      },
+      "method": "get",
+      "options": [],
+      "url": "https://api.coinbase.com/v1/accounts/536a541fa9393bb3c7000034/balance"
+    },
+    "response": {
+      "body": "{\n  \"amount\": \"36.62800000\",\n  \"currency\": \"BTC\"\n}",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

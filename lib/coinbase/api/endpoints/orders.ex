@@ -4,7 +4,7 @@ defmodule Coinbase.API.Orders do
 
   @endpoint "orders"
   @data_struct Coinbase.Order
-  @collection_name String.to_atom(@endpoint)
+  @search_key String.to_atom(@endpoint)
 
   @doc """
   List orders
@@ -17,7 +17,7 @@ defmodule Coinbase.API.Orders do
   @spec list(pid, map) :: Coinbase.response
   def list(coinbase, optionals \\ %{}) do
     params = add_optionals(%{}, optionals)
-    Base.list(coinbase, @endpoint, params, @data_struct, @collection_name)
+    Base.list(coinbase, @endpoint, params, @data_struct, @search_key)
   end
 
   @doc """
@@ -25,7 +25,7 @@ defmodule Coinbase.API.Orders do
   """
   @spec get(pid, binary) :: Coinbase.response
   def get(coinbase, id_or_custom_field) do
-    Base.get(coinbase, @endpoint, id_or_custom_field, @data_struct, @collection_name)
+    Base.get(coinbase, @endpoint, id_or_custom_field, @data_struct, @search_key)
   end
 
   @doc """
@@ -42,7 +42,7 @@ defmodule Coinbase.API.Orders do
   @spec create(pid, map) :: Coinbase.response
   def create(coinbase, button) do
     params = %{button: button}
-    Base.post(coinbase, @endpoint, params, @data_struct, @collection_name)
+    Base.post(coinbase, @endpoint, params, @data_struct, @search_key)
   end
 
   @doc """
@@ -56,6 +56,6 @@ defmodule Coinbase.API.Orders do
   @spec refund(pid, binary, map) :: Coinbase.response
   def refund(coinbase, id_or_custom_field, optionals \\ %{}) do
     params = add_optionals(%{}, optionals)
-    Base.post(coinbase, "#{@endpoint}/#{id_or_custom_field}/refund", params, @data_struct, @collection_name)
+    Base.post(coinbase, "#{@endpoint}/#{id_or_custom_field}/refund", params, @data_struct, @search_key)
   end
 end

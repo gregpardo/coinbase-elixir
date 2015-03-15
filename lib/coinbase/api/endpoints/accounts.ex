@@ -3,9 +3,12 @@ defmodule Coinbase.API.Accounts do
   import Coinbase.Util.Params
 
   @endpoint "accounts"
-  @data_struct Coinbase.Account
-  @address_struct Coinbase.Address
-  @collection_name String.to_atom(@endpoint)
+  @as_account Coinbase.Account
+  @as_key_account :account
+  @as_balance Coinbase.Balance
+  @as_key_balance :balance
+  @as_address Coinbase.Address
+  @as_key_address :address
 
   @doc """
   Gets a list of accounts
@@ -18,7 +21,8 @@ defmodule Coinbase.API.Accounts do
   @spec list(pid, map) :: Coinbase.response
   def list(coinbase, optionals \\ %{}) do
     params = add_optionals(%{}, optionals)
-    Base.list(coinbase, @endpoint, params, @data_struct, @collection_name)
+    options = %{as: @as_account, as_key: @as_key_account, params: params}
+    Base.list(coinbase, @endpoint, options)
   end
 
   @doc """
@@ -26,7 +30,8 @@ defmodule Coinbase.API.Accounts do
   """
   @spec get(pid, binary) :: Coinbase.response
   def get(coinbase, id) do
-    Base.get(coinbase, @endpoint, id, @data_struct, @collection_name)
+    options = %{as: @as_account, as_key: @as_key_account}
+    Base.get(coinbase, "#{@endpoint}/#{id}", options)
   end
 
   @doc """
@@ -39,9 +44,10 @@ defmodule Coinbase.API.Accounts do
   """
   @spec create(pid, binary, map) :: Coinbase.response
   def create(coinbase, name, optionals \\ %{}) do
-    params = %{account: %{name: name}}
-    params = add_optionals(params, optionals)
-    Base.post(coinbase, @endpoint, params, @data_struct, @collection_name)
+    body = %{account: %{name: name}}
+    body = add_optionals(body, optionals)
+    options = %{as: @as_account, as_key: @as_key_account, body: body}
+    Base.post(coinbase, @endpoint, options)
   end
 
   @doc """
@@ -49,7 +55,8 @@ defmodule Coinbase.API.Accounts do
   """
   @spec get_balance(pid, binary) :: Coinbase.response
   def get_balance(coinbase, id) do
-    Base.get(coinbase, "#{@endpoint}/#{id}/balance", @data_struct, @collection_name)
+    options = %{as: @as_balance, as_key: @as_key_balance}
+    Base.get(coinbase, "#{@endpoint}/#{id}/balance", options)
   end
 
   @doc """
@@ -57,7 +64,8 @@ defmodule Coinbase.API.Accounts do
   """
   @spec get_address(pid, binary) :: Coinbase.response
   def get_address(coinbase, id) do
-    Base.get(coinbase, "#{@endpoint}/#{id}/address", @data_struct, @collection_name)
+    options = %{as: @as_address, as_key: @as_key_address}
+    Base.get(coinbase, "#{@endpoint}/#{id}/address", options)
   end
 
   @doc """
@@ -65,16 +73,19 @@ defmodule Coinbase.API.Accounts do
   """
   @spec create_address(pid, binary,  map) :: Coinbase.response
   def create_address(coinbase, account_id, optionals \\ %{}) do
-    params = add_optionals(%{}, optionals)
-    Base.post(coinbase, "#{@endpoint}/#{account_id}/address", params, @address_struct, @collection_name)
+    body = add_optionals(%{}, optionals)
+    options = %{as: @as_address, as_key: @as_key_address, body: body}
+    Base.post(coinbase, "#{@endpoint}/#{account_id}/address", options)
   end
 
   @doc """
   Updates a account
   """
-  @spec update(pid, map) :: Coinbase.response
-  def update(coinbase, account) do
-    Base.put(coinbase, "#{@endpoint}/#{account.id}", account, @data_struct, @collection_name)
+  @spec update(pid, binary, map) :: Coinbase.response
+  def update(coinbase, id, account) do
+    body = %{account: account}
+    options = %{as: @as_account, as_key: @as_key_account, body: body}
+    Base.put(coinbase, "#{@endpoint}/#{id}", options)
   end
 
   @doc """
@@ -82,7 +93,7 @@ defmodule Coinbase.API.Accounts do
   """
   @spec set_primary(pid, binary) :: Coinbase.response
   def set_primary(coinbase, id) do
-    Base.post(coinbase, "#{@endpoint}/#{id}/primary", @data_struct, @collection_name)
+    Base.post(coinbase, "#{@endpoint}/#{id}/primary", %{as: :none})
   end
 
   @doc """
@@ -90,6 +101,7 @@ defmodule Coinbase.API.Accounts do
   """
   @spec delete(pid, binary) :: Coinbase.response
   def delete(coinbase, id) do
-    Base.delete(coinbase, @endpoint, id, @data_struct, @collection_name)
+    options = %{as: @as_account, as_key: @as_account}
+    Base.delete(coinbase, "#{@endpoint}/#{id}", options)
   end
 end

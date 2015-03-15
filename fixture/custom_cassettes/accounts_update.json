@@ -1,0 +1,25 @@
+[
+  {
+    "request": {
+      "body": "{\n  \"account\": {\n    \"name\": \"Satoshi Wallet\"\n  }\n}",
+      "headers": {
+        "ACCESS_KEY": "api_key",
+        "Connection": "close",
+        "Content-Type": "application/json",
+        "Host": "coinbase.com",
+        "User-Agent": "Elixir"
+      },
+      "method": "put",
+      "options": [],
+      "url": "https://api.coinbase.com/v1/accounts/53752d3e46cd93c93c00000c"
+    },
+    "response": {
+      "body": "{\n  \"success\": true,\n  \"account\": {\n    \"id\": \"53752d3e46cd93c93c00000c\",\n    \"name\": \"Satoshi Wallet\",\n    \"active\": true,\n    \"created_at\": \"2014-05-15T14:10:22-07:00\",\n    \"balance\": {\n      \"amount\": \"100.00\",\n      \"currency\": \"GBP\"\n    },\n    \"native_balance\": {\n      \"amount\": \"168.14\",\n      \"currency\": \"USD\"\n    },\n    \"primary\": false\n  }\n}",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

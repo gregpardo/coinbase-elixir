@@ -1,0 +1,25 @@
+[
+  {
+    "request": {
+      "body": "{\n  \"address\": {\n    \"callback_url\": \"http://www.example.com/callback\",\n    \"label\": \"Dalmation donations\"\n  }\n}",
+      "headers": {
+        "User-Agent": "Elixir",
+        "Connection": "close",
+        "Host": "coinbase.com",
+        "Content-Type": "application/json",
+        "ACCESS_KEY": "api_key"
+      },
+      "method": "post",
+      "options": [],
+      "url": "https://api.coinbase.com/v1/accounts/536a541fa9393bb3c7000034/address"
+    },
+    "response": {
+      "body": "{\n  \"success\": true,\n  \"address\": \"muVu2JZo8PbewBHRp6bpqFvVD87qvqEHWA\",\n  \"callback_url\": \"http://www.example.com/callback\",\n  \"label\": \"Dalmation donations\"\n}",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

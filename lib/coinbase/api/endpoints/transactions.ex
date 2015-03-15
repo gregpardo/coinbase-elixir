@@ -4,7 +4,7 @@ defmodule Coinbase.API.Transactions do
 
   @endpoint "transactions"
   @data_struct Coinbase.Transaction
-  @collection_name String.to_atom(@endpoint)
+  @search_key String.to_atom(@endpoint)
 
   @doc """
   Lists transactions
@@ -17,7 +17,7 @@ defmodule Coinbase.API.Transactions do
   @spec list(pid, map) :: Coinbase.response
   def list(coinbase, optionals \\ %{}) do
     params = add_optionals(%{}, optionals)
-    Base.list(coinbase, @endpoint, params, @data_struct, @collection_name)
+    Base.list(coinbase, @endpoint, params, @data_struct, @search_key)
   end
 
   @doc """
@@ -29,7 +29,7 @@ defmodule Coinbase.API.Transactions do
   @spec get(pid, binary, map) :: Coinbase.response
   def get(coinbase, id, optionals \\ %{}) do
     params = add_optionals(%{}, optionals)
-    Base.get(coinbase, @endpoint, id, params, @data_struct, @collection_name)
+    Base.get(coinbase, @endpoint, id, params, @data_struct, @search_key)
   end
 
   @doc """
@@ -50,7 +50,7 @@ defmodule Coinbase.API.Transactions do
   @spec send_money(pid, map, map) :: Coinbase.response
   def send_money(coinbase, transaction, optionals \\ %{}) do
     params = add_optionals(transaction, optionals)
-    Base.post(coinbase, "#{@endpoint}/send_money", params, @data_struct, @collection_name)
+    Base.post(coinbase, "#{@endpoint}/send_money", params, @data_struct, @search_key)
   end
 
   @doc """
@@ -63,7 +63,7 @@ defmodule Coinbase.API.Transactions do
   @spec transfer_money(pid, map, map) :: Coinbase.response
   def transfer_money(coinbase, transaction, optionals \\ %{}) do
     params = add_optionals(transaction, optionals)
-    Base.post(coinbase, "#{@endpoint}/transfer_money", params, @data_struct, @collection_name)
+    Base.post(coinbase, "#{@endpoint}/transfer_money", params, @data_struct, @search_key)
   end
 
   @doc """
@@ -79,7 +79,7 @@ defmodule Coinbase.API.Transactions do
   @spec request_money(pid, map, map) :: Coinbase.response
   def request_money(coinbase, transaction, optionals \\ %{}) do
     params = add_optionals(transaction, optionals)
-    Base.post(coinbase, "#{@endpoint}/request_money", params, @data_struct, @collection_name)
+    Base.post(coinbase, "#{@endpoint}/request_money", params, @data_struct, @search_key)
   end
 
   @doc """
@@ -91,7 +91,7 @@ defmodule Coinbase.API.Transactions do
   @spec resend_request(pid, binary, map) :: Coinbase.response
   def resend_request(coinbase, id, optionals \\ %{}) do
     params = add_optionals(%{}, optionals)
-    Base.put(coinbase, "#{@endpoint}/#{id}/resend_request", params, @data_struct, @collection_name)
+    Base.put(coinbase, "#{@endpoint}/#{id}/resend_request", params, @data_struct, @search_key)
   end
 
   @doc """
@@ -103,7 +103,7 @@ defmodule Coinbase.API.Transactions do
   @spec complete_request(pid, binary, map) :: Coinbase.response
   def complete_request(coinbase, id, optionals \\ %{}) do
     params = add_optionals(%{}, optionals)
-    Base.put(coinbase, "#{@endpoint}/#{id}/complete_request", params, @data_struct, @collection_name)
+    Base.put(coinbase, "#{@endpoint}/#{id}/complete_request", params, @data_struct, @search_key)
   end
 
   @doc """
@@ -115,7 +115,7 @@ defmodule Coinbase.API.Transactions do
   @spec cancel_request(pid, binary, map) :: Coinbase.response
   def cancel_request(coinbase, id, optionals \\ %{}) do
     params = add_optionals(%{}, optionals)
-    Base.put(coinbase, "#{@endpoint}/#{id}/cancel_request", params, @data_struct, @collection_name)
+    Base.put(coinbase, "#{@endpoint}/#{id}/cancel_request", params, @data_struct, @search_key)
   end
 
   @doc """
@@ -128,7 +128,7 @@ defmodule Coinbase.API.Transactions do
   @spec sighashes(pid, binary, map) :: Coinbase.response
   def sighashes(coinbase, id, optionals \\ %{}) do
     params = add_optionals(%{}, optionals)
-    Base.get(coinbase, "#{@endpoint}/#{id}/sighashes", params, @data_struct, @collection_name)
+    Base.get(coinbase, "#{@endpoint}/#{id}/sighashes", params, @data_struct, @search_key)
   end
 
   @doc """
@@ -140,6 +140,6 @@ defmodule Coinbase.API.Transactions do
   @spec signatures(pid, binary, map) :: Coinbase.response
   def signatures(coinbase, id, signatures) do
     params = %{signatures: signatures}
-    Base.put(coinbase, "#{@endpoint}/#{id}/signatures", params, @data_struct, @collection_name)
+    Base.put(coinbase, "#{@endpoint}/#{id}/signatures", params, @data_struct, @search_key)
   end
 end

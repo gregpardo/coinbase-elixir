@@ -22,11 +22,13 @@ defmodule Coinbase.Mixfile do
 
   defp deps do
     [
+      {:ibrowse, github: "cmullaparthi/ibrowse"},
+      { :inflex, "~> 1.0.0" },
       {:dotenv, "~> 0.0.4"},
       {:httpoison, "~> 0.6.0"},
       {:poison, "~> 1.3.1"},
       {:timex, "~> 0.13.3"},
-      {:exvcr, "~> 0.3.5", only: :test},
+      {:exvcr, "~> 0.4.0", only: :test},
       {:earmark, "~> 0.1", only: :dev},
       {:ex_doc, "~> 0.6", only: :dev}
     ]

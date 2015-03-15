@@ -4,7 +4,7 @@ defmodule Coinbase.API.Subscriptions do
 
   @endpoint "subscribers"
   @data_struct Coinbase.RecurringPayment
-  @collection_name :recurring_payments
+  @search_key :recurring_payments
 
   @doc """
   List subscriptions
@@ -15,7 +15,7 @@ defmodule Coinbase.API.Subscriptions do
   @spec list(pid, map) :: Coinbase.response
   def list(coinbase, optionals \\ %{}) do
     params = add_optionals(%{}, optionals)
-    Base.list(coinbase, @endpoint, params, @data_struct, @collection_name)
+    Base.list(coinbase, @endpoint, params, @data_struct, @search_key)
   end
 
   @doc """
@@ -27,6 +27,6 @@ defmodule Coinbase.API.Subscriptions do
   @spec get(pid, binary, map) :: Coinbase.response
   def get(coinbase, id, optionals) do
     params = add_optionals(%{}, optionals)
-    Base.get(coinbase, @endpoint, id, params, @data_struct, @collection_name)
+    Base.get(coinbase, @endpoint, id, params, @data_struct, @search_key)
   end
 end

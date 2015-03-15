@@ -5,7 +5,7 @@ defmodule Coinbase.API.Buttons do
   @endpoint "buttons"
   @data_struct Coinbase.Button
   @order_struct Coinbase.Order
-  @collection_name String.to_atom(@endpoint)
+  @search_key String.to_atom(@endpoint)
 
   @doc """
   Create a new payment button, page, or iFrame
@@ -17,7 +17,7 @@ defmodule Coinbase.API.Buttons do
   def create(coinbase, button, optionals \\ %{}) do
     params = %{button: button}
     params = add_optionals(params, optionals)
-    Base.post(coinbase, @endpoint, params, @data_struct, @collection_name)
+    Base.post(coinbase, @endpoint, params, @data_struct, @search_key)
   end
 
   @doc """
@@ -25,7 +25,7 @@ defmodule Coinbase.API.Buttons do
   """
   @spec get(pid, binary) :: Coinbase.response
   def get(coinbase, id) do
-    Base.get(coinbase, @endpoint, id, @data_struct, @collection_name)
+    Base.get(coinbase, @endpoint, id, @data_struct, @search_key)
   end
 
   @doc """
