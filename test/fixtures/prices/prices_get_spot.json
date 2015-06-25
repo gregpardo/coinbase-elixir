@@ -1,0 +1,25 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "User-Agent": "Elixir",
+        "Connection": "close",
+        "Host": "coinbase.com",
+        "Content-Type": "application/json",
+        "ACCESS_KEY": "api_key"
+      },
+      "method": "get",
+      "options": [],
+      "url": "https://api.coinbase.com/v1/prices/spot_rate?currency=USD"
+    },
+    "response": {
+      "body": "{\n  \"amount\": \"10.00\",\n  \"currency\": \"USD\"\n}",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

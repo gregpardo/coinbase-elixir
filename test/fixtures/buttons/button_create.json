@@ -1,0 +1,25 @@
+[
+  {
+    "request": {
+      "body": "{\n  \"button\": {\n    \"name\": \"test\",\n    \"type\": \"buy_now\",\n    \"subscription\": false,\n    \"price_string\": \"1.23\",\n    \"price_currency_iso\": \"USD\",\n    \"custom\": \"Order123\",\n    \"callback_url\": \"http://www.example.com/my_custom_button_callback\",\n    \"description\": \"Sample description\",\n    \"style\": \"custom_large\",\n    \"include_email\": true\n  }\n}",
+      "headers": {
+        "User-Agent": "Elixir",
+        "Connection": "close",
+        "Host": "coinbase.com",
+        "Content-Type": "application/json",
+        "ACCESS_KEY": "api_key"
+      },
+      "method": "post",
+      "options": [],
+      "url": "https://api.coinbase.com/v1/buttons"
+    },
+    "response": {
+      "body": "{\n  \"button\": {\n    \"name\": \"test\",\n    \"type\": \"buy_now\",\n    \"subscription\": false,\n    \"price_string\": \"1.23\",\n    \"price_currency_iso\": \"USD\",\n    \"custom\": \"Order123\",\n    \"callback_url\": \"http://www.example.com/my_custom_button_callback\",\n    \"description\": \"Sample description\",\n    \"style\": \"custom_large\",\n    \"include_email\": true\n  }\n}",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

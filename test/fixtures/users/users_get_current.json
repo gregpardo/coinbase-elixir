@@ -1,0 +1,25 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "User-Agent": "Elixir",
+        "Connection": "close",
+        "Host": "coinbase.com",
+        "Content-Type": "application/json",
+        "ACCESS_KEY": "api_key"
+      },
+      "method": "get",
+      "options": [],
+      "url": "https://api.coinbase.com/v1/users/self"
+    },
+    "response": {
+      "body": "{\n  \"user\": {\n    \"id\": \"512db383f8182bd24d000001\",\n    \"name\": \"User One\",\n    \"email\": \"user1@example.com\",\n    \"time_zone\": \"Pacific Time (US & Canada)\",\n    \"native_currency\": \"USD\",\n    \"balance\": {\n      \"amount\": \"49.76000000\",\n      \"currency\": \"BTC\"\n    },\n    \"merchant\": {\n      \"enabled\": true,\n      \"company_name\": \"Company Name, Inc.\",\n      \"logo\": {\n        \"small\": \"http://smalllogo.example\",\n        \"medium\": \"http://mediumlogo.example\",\n        \"url\": \"http://logo.example\"\n      }\n    },\n    \"buy_level\": 1,\n    \"instant_buy_level\": 1,\n    \"sell_level\": 1,\n    \"buy_limit\": {\n      \"amount\": \"1000\",\n      \"currency\": \"USD\"\n    },\n    \"instant_buy_limit\": {\n      \"amount\": \"1000\",\n      \"currency\": \"USD\"\n    },\n    \"sell_limit\": {\n      \"amount\": \"1000\",\n      \"currency\": \"USD\"\n    }\n  }\n}",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

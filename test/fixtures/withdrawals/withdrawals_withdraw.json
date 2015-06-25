@@ -1,0 +1,25 @@
+[
+  {
+    "request": {
+      "body": "{\n    \"account_id\": \"54e649216291227bd200006a\",\n    \"payment_method_id\": \"54e6495e6291227bd2000078\",\n    \"amount\": \"10.00\"\n}",
+      "headers": {
+        "User-Agent": "Elixir",
+        "Connection": "close",
+        "Host": "coinbase.com",
+        "Content-Type": "application/json",
+        "ACCESS_KEY": "api_key"
+      },
+      "method": "post",
+      "options": [],
+      "url": "https://api.coinbase.com/v1/withdrawals"
+    },
+    "response": {
+      "body": "{\n    \"success\": true,\n    \"transfer\": {\n        \"id\": \"54e6708f6291227bd20000cc\",\n        \"created_at\": \"2015-02-19T15:23:59-08:00\",\n        \"fees\": {\n            \"bank\": {\n                \"cents\": 0,\n                \"currency_iso\": \"USD\"\n            }\n        },\n        \"payout_date\": \"2015-02-23T15:23:59-08:00\",\n        \"_type\": \"Withdrawal\",\n        \"code\": \"54e6708f6291227bd20000cc\",\n        \"transaction_id\": \"54e670906291227bd20000d0\",\n        \"type\": \"Withdrawal\",\n        \"status\": \"Pending\",\n        \"detailed_status\": \"started\",\n        \"btc\": {\n            \"amount\": \"0.00000000\",\n            \"currency\": \"BTC\"\n        },\n        \"subtotal\": {\n            \"amount\": \"10.00\",\n            \"currency\": \"USD\"\n        },\n        \"total\": {\n            \"amount\": \"10.00\",\n            \"currency\": \"USD\"\n        },\n        \"description\": \"Withdrew $10.00 (+ 0 banking fee) via *****7978.\",\n        \"account\": \"54e649216291227bd200006a\",\n        \"payment_method\": {\n            \"id\": \"54e6495e6291227bd2000078\",\n            \"currency\": \"USD\",\n            \"name\": \" *****7978\",\n            \"can_buy\": true,\n            \"can_sell\": true,\n            \"type\": \"ach_bank_account\",\n            \"verified\": true\n        }\n    }\n}",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

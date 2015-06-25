@@ -1,0 +1,25 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "User-Agent": "Elixir",
+        "Connection": "close",
+        "Host": "coinbase.com",
+        "Content-Type": "application/json",
+        "ACCESS_KEY": "api_key"
+      },
+      "method": "get",
+      "options": [],
+      "url": "https://api.coinbase.com/v1/prices/sell?qty=1"
+    },
+    "response": {
+      "body": "{\n  \"subtotal\": {\n    \"amount\": \"9.90\",\n    \"currency\": \"USD\"\n  },\n  \"fees\": [\n    {\n      \"coinbase\": {\n        \"amount\": \"0.10\",\n        \"currency\": \"USD\"\n      }\n    },\n    {\n      \"bank\": {\n        \"amount\": \"0.15\",\n        \"currency\": \"USD\"\n      }\n    }\n  ],\n  \"total\": {\n    \"amount\": \"9.65\",\n    \"currency\": \"USD\"\n  },\n  \"amount\": \"9.65\",\n  \"currency\": \"USD\"\n}",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

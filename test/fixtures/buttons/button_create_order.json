@@ -1,0 +1,25 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "User-Agent": "Elixir",
+        "Connection": "close",
+        "Host": "coinbase.com",
+        "Content-Type": "application/json",
+        "ACCESS_KEY": "api_key"
+      },
+      "method": "post",
+      "options": [],
+      "url": "https://api.coinbase.com/v1/buttons/93865b9cae83706ae59220c013bc0afd/create_order"
+    },
+    "response": {
+      "body": "{\n  \"success\": true,\n  \"order\": {\n    \"id\": \"7RTTRDVP\",\n    \"created_at\": \"2013-11-09T22:47:10-08:00\",\n    \"status\": \"new\",\n    \"total_btc\": {\n      \"cents\": 100000000,\n      \"currency_iso\": \"BTC\"\n    },\n    \"total_native\": {\n      \"cents\": 3000,\n      \"currency_iso\": \"USD\"\n    },\n    \"custom\": \"Order123\",\n    \"receive_address\": \"mgrmKftH5CeuFBU3THLWuTNKaZoCGJU5jQ\",\n    \"button\": {\n      \"type\": \"buy_now\",\n      \"name\": \"test\",\n      \"description\": \"Sample description\",\n      \"id\": \"93865b9cae83706ae59220c013bc0afd\"\n    },\n    \"transaction\": null\n  }\n}",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

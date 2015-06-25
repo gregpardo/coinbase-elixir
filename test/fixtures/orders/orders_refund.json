@@ -1,0 +1,25 @@
+[
+  {
+    "request": {
+      "body": "{\n  \"order\": {\n    \"refund_iso_code\": \"BTC\"\n  }\n}",
+      "headers": {
+        "User-Agent": "Elixir",
+        "Connection": "close",
+        "Host": "coinbase.com",
+        "Content-Type": "application/json",
+        "ACCESS_KEY": "api_key"
+      },
+      "method": "post",
+      "options": [],
+      "url": "https://api.coinbase.com/v1/orders/A7C52JQT/refund"
+    },
+    "response": {
+      "body": "{\n  \"order\": {\n    \"id\": \"YYZQ6RN4\",\n    \"created_at\": \"2014-06-17T16:03:53-07:00\",\n    \"status\": \"completed\",\n    \"event\": null,\n    \"total_btc\": {\n      \"cents\": 10000000,\n      \"currency_iso\": \"BTC\"\n    },\n    \"total_native\": {\n      \"cents\": 100,\n      \"currency_iso\": \"USD\"\n    },\n    \"total_payout\": {\n      \"cents\": 100,\n      \"currency_iso\": \"USD\"\n    },\n    \"custom\": \"\",\n    \"receive_address\": \"mmUFLyAtF89mcvStdobiby3xFpdLARQhNw\",\n    \"button\": {\n      \"type\": \"buy_now\",\n      \"name\": \"asdfasdf\",\n      \"description\": \"\",\n      \"id\": \"320421614991df1e2d526b8169644067\"\n    },\n    \"refund_address\": \"n49yYq81iZxqyKj2ys85ErXLJp9EBPNqis\",\n    \"transaction\": {\n      \"id\": \"53a0c9ee137f734abb0001db\",\n      \"hash\": \"5d4751d532ba6845f09c24d21a8b1153e96f2b19fcfab84591b3a3be78648998\",\n      \"confirmations\": 101\n    },\n    \"refund_transaction\": {\n      \"id\": \"53a22f33137f734abb000296\",\n      \"hash\": \"ce401504150a02618ca8ee93e5b948c59e30040b6101473a07a97e77c6c4be1c\",\n      \"confirmations\": 0\n    }\n  }\n}",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

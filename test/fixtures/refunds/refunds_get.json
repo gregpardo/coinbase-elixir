@@ -1,0 +1,25 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "User-Agent": "Elixir",
+        "Connection": "close",
+        "Host": "coinbase.com",
+        "Content-Type": "application/json",
+        "ACCESS_KEY": "api_key"
+      },
+      "method": "get",
+      "options": [],
+      "url": "https://api.coinbase.com/v1/refunds/L9HBEX9R"
+    },
+    "response": {
+      "body": "{\n  \"refund\": {\n    \"id\": \"L9HBEX9R\",\n    \"created_at\": \"Mon, 09 Feb 2015 15:31:05 PST -08:00\",\n    \"amount_btc\": {\n      \"cents\": \"10000000.0\",\n      \"currency_iso\": \"BTC\"\n    },\n    \"amount_native\": {\n      \"cents\": \"100.0\",\n      \"currency_iso\": \"USD\"\n    },\n    \"transfer_id\": null,\n    \"transaction_id\": \"54d94335ef634f12f8000342\",\n    \"refundable\": {\n      \"id\": \"54d19395ef634f53d400009a\",\n      \"type\": \"order\"\n    }\n  }\n}",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

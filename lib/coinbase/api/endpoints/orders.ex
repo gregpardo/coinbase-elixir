@@ -3,8 +3,8 @@ defmodule Coinbase.API.Orders do
   import Coinbase.Util.Params
 
   @endpoint "orders"
-  @data_struct Coinbase.Order
-  @search_key String.to_atom(@endpoint)
+  @as_order Coinbase.Order
+  @as_key_order :order
 
   @doc """
   List orders
@@ -17,7 +17,7 @@ defmodule Coinbase.API.Orders do
   @spec list(pid, map) :: Coinbase.response
   def list(coinbase, optionals \\ %{}) do
     params = add_optionals(%{}, optionals)
-    Base.list(coinbase, @endpoint, params, @data_struct, @search_key)
+    Base.list(coinbase, @endpoint, params, @as_order, @as_key_order)
   end
 
   @doc """
@@ -25,7 +25,7 @@ defmodule Coinbase.API.Orders do
   """
   @spec get(pid, binary) :: Coinbase.response
   def get(coinbase, id_or_custom_field) do
-    Base.get(coinbase, @endpoint, id_or_custom_field, @data_struct, @search_key)
+    Base.get(coinbase, @endpoint, id_or_custom_field, @as_order, @as_key_order)
   end
 
   @doc """
@@ -42,7 +42,7 @@ defmodule Coinbase.API.Orders do
   @spec create(pid, map) :: Coinbase.response
   def create(coinbase, button) do
     params = %{button: button}
-    Base.post(coinbase, @endpoint, params, @data_struct, @search_key)
+    Base.post(coinbase, @endpoint, params, @as_order, @as_key_order)
   end
 
   @doc """
@@ -56,6 +56,6 @@ defmodule Coinbase.API.Orders do
   @spec refund(pid, binary, map) :: Coinbase.response
   def refund(coinbase, id_or_custom_field, optionals \\ %{}) do
     params = add_optionals(%{}, optionals)
-    Base.post(coinbase, "#{@endpoint}/#{id_or_custom_field}/refund", params, @data_struct, @search_key)
+    Base.post(coinbase, "#{@endpoint}/#{id_or_custom_field}/refund", params, @as_order, @as_key_order)
   end
 end

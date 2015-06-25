@@ -1,0 +1,25 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "User-Agent": "Elixir",
+        "Connection": "close",
+        "Host": "coinbase.com",
+        "Content-Type": "application/json",
+        "ACCESS_KEY": "api_key"
+      },
+      "method": "post",
+      "options": [],
+      "url": "https://api.coinbase.com/v1/transfers/5474d23a629122e172000238/commit"
+    },
+    "response": {
+      "body": "{\n  \"success\": true,\n  \"transfer\": {\n    \"id\": \"5474d23a629122e172000238\",\n    \"created_at\": \"2014-11-25T11:03:22-08:00\",\n    \"fees\": {\n      \"coinbase\": {\n        \"cents\": 0,\n        \"currency_iso\": \"EUR\"\n      },\n      \"bank\": {\n        \"cents\": 0,\n        \"currency_iso\": \"EUR\"\n      }\n    },\n    \"payout_date\": \"2014-11-25T11:02:18-08:00\",\n    \"transaction_id\": \"5474d287629122e172000240\",\n    \"_type\": \"AchDebit\",\n    \"code\": \"5474d23a629122e172000238\",\n    \"type\": \"Buy\",\n    \"status\": \"Pending\",\n    \"detailed_status\": \"started\",\n    \"btc\": {\n      \"amount\": \"0.37200000\",\n      \"currency\": \"BTC\"\n    },\n    \"subtotal\": {\n      \"amount\": \"3.00\",\n      \"currency\": \"EUR\"\n    },\n    \"total\": {\n      \"amount\": \"3.00\",\n      \"currency\": \"EUR\"\n    },\n    \"description\": \"Bought 0.372 BTC for €3.00.\",\n    \"account\": \"544955d2629122efb000000f\",\n    \"payment_method\": {\n      \"id\": \"545348f26291223ddc00011f\",\n      \"name\": \"EUR Wallet\",\n      \"can_buy\": true,\n      \"can_sell\": true,\n      \"account_id\": \"545348f26291223ddc00011e\"\n    }\n  }\n}",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

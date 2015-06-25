@@ -1,0 +1,25 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "User-Agent": "Elixir",
+        "Connection": "close",
+        "Host": "coinbase.com",
+        "Content-Type": "application/json",
+        "ACCESS_KEY": "api_key"
+      },
+      "method": "get",
+      "options": [],
+      "url": "https://api.coinbase.com/v1/recurring_payments/5193377ef8182b7c19000015"
+    },
+    "response": {
+      "body": "{\n  \"recurring_payment\": {\n    \"id\": \"5193377ef8182b7c19000015\",\n    \"type\": \"send\",\n    \"status\": \"active\",\n    \"created_at\": \"2013-05-30T13:43:21-07:00\",\n    \"to\": \"user2@example.com\",\n    \"from\": null,\n    \"start_type\": \"now\",\n    \"times\": -1,\n    \"times_run\": 7,\n    \"repeat\": \"monthly\",\n    \"last_run\": \"2013-05-30T13:00:00-07:00\",\n    \"next_run\": \"2013-06-30T13:00:00-07:00\",\n    \"notes\": null,\n    \"description\": \"Send 0.02 BTC to User Two\",\n    \"amount\": {\n      \"amount\": \"0.02000000\",\n      \"currency\": \"BTC\"\n    }\n  }\n}",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

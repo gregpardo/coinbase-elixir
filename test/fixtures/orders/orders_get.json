@@ -1,0 +1,25 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "User-Agent": "Elixir",
+        "Connection": "close",
+        "Host": "coinbase.com",
+        "Content-Type": "application/json",
+        "ACCESS_KEY": "api_key"
+      },
+      "method": "get",
+      "options": [],
+      "url": "https://api.coinbase.com/v1/orders/A7C52JQT"
+    },
+    "response": {
+      "body": "{\n  \"order\": {\n    \"id\": \"A7C52JQT\",\n    \"created_at\": \"2013-03-11T22:04:37-07:00\",\n    \"status\": \"completed\",\n    \"total_btc\": {\n      \"cents\": 10000000,\n      \"currency_iso\": \"BTC\"\n    },\n    \"total_native\": {\n      \"cents\": 10000000,\n      \"currency_iso\": \"BTC\"\n    },\n    \"custom\": \"custom123\",\n    \"receive_address\": \"mgrmKftH5CeuFBU3THLWuTNKaZoCGJU5jQ\",\n    \"button\": {\n      \"type\": \"buy_now\",\n      \"name\": \"test\",\n      \"description\": \"\",\n      \"id\": \"eec6d08e9e215195a471eae432a49fc7\"\n    },\n    \"transaction\": {\n      \"id\": \"513eb768f12a9cf27400000b\",\n      \"hash\": \"4cc5eec20cd692f3cdb7fc264a0e1d78b9a7e3d7b862dec1e39cf7e37ababc14\",\n      \"confirmations\": 0\n    }\n  }\n}",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

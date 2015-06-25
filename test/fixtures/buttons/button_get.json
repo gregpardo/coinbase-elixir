@@ -1,0 +1,25 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "User-Agent": "Elixir",
+        "Connection": "close",
+        "Host": "coinbase.com",
+        "Content-Type": "application/json",
+        "ACCESS_KEY": "api_key"
+      },
+      "method": "get",
+      "options": [],
+      "url": "https://api.coinbase.com/v1/buttons/93865b9cae83706ae59220c013bc0afd"
+    },
+    "response": {
+      "body": "{\n  \"button\": {\n    \"code\": \"93865b9cae83706ae59220c013bc0afd\",\n    \"type\": \"buy_now\",\n    \"subscription\": false,\n    \"style\": \"custom_large\",\n    \"text\": \"Pay With Bitcoin\",\n    \"name\": \"test\",\n    \"description\": \"Sample description\",\n    \"custom\": \"Order123\",\n    \"callback_url\": \"http://www.example.com/my_custom_button_callback\",\n    \"price\": {\n      \"cents\": 123,\n      \"currency_iso\": \"USD\"\n    }\n  }\n}",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

@@ -1,0 +1,25 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "User-Agent": "Elixir",
+        "Connection": "close",
+        "Host": "coinbase.com",
+        "Content-Type": "application/json",
+        "ACCESS_KEY": "api_key"
+      },
+      "method": "get",
+      "options": [],
+      "url": "https://api.coinbase.com/v1/currencies/exchange_rates"
+    },
+    "response": {
+      "body": "{\n  \"aed_to_btc\": \"0.000851\",\n  \"aed_to_usd\": \"0.272255\",\n  \"zwl_to_btc\": \"0.00001\",\n  \"zwl_to_usd\": \"0.003102\"\n}",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

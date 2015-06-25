@@ -3,9 +3,10 @@ defmodule Coinbase.API.Buttons do
   import Coinbase.Util.Params
 
   @endpoint "buttons"
-  @data_struct Coinbase.Button
-  @order_struct Coinbase.Order
-  @search_key String.to_atom(@endpoint)
+  @as_button Coinbase.Button
+  @as_key_button :button
+  @as_order Coinbase.Order
+  @as_key_order :order
 
   @doc """
   Create a new payment button, page, or iFrame
@@ -15,9 +16,10 @@ defmodule Coinbase.API.Buttons do
   """
   @spec create(pid, map, map) :: Coinbase.response
   def create(coinbase, button, optionals \\ %{}) do
-    params = %{button: button}
-    params = add_optionals(params, optionals)
-    Base.post(coinbase, @endpoint, params, @data_struct, @search_key)
+    body = %{button: button}
+    body = add_optionals(%{}, optionals)
+    options = %{as: @as_button, as_key: @as_key_button, body: body}
+    Base.post(coinbase, @endpoint, options)
   end
 
   @doc """
@@ -25,7 +27,8 @@ defmodule Coinbase.API.Buttons do
   """
   @spec get(pid, binary) :: Coinbase.response
   def get(coinbase, id) do
-    Base.get(coinbase, @endpoint, id, @data_struct, @search_key)
+    options = %{as: @as_button, as_key: @as_key_button}
+    Base.get(coinbase, "#{@endpoint}/#{id}", options)
   end
 
   @doc """
@@ -33,7 +36,8 @@ defmodule Coinbase.API.Buttons do
   """
   @spec create_order(pid, binary) :: Coinbase.response
   def create_order(coinbase, id) do
-    Base.post(coinbase, "#{@endpoint}/#{id}/create_order", @order_struct, String.to_atom("orders"))
+    options = %{as: @as_order, as_key: @as_key_order}
+    Base.post(coinbase, "#{@endpoint}/#{id}/create_order", options)
   end
 
   @doc """
@@ -41,6 +45,7 @@ defmodule Coinbase.API.Buttons do
   """
   @spec list_orders(pid, binary) :: Coinbase.response
   def list_orders(coinbase, id) do
-    Base.get(coinbase, "#{@endpoint}/#{id}/orders", @order_struct, String.to_atom("orders"))
+    options = %{as: @as_order, as_key: @as_key_order}
+    Base.list(coinbase, "#{@endpoint}/#{id}/orders", options)
   end
 end

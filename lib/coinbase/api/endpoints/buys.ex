@@ -3,8 +3,8 @@ defmodule Coinbase.API.Buys do
   import Coinbase.Util.Params
 
   @endpoint "buys"
-  @data_struct Coinbase.Transfer
-  @search_key :transfers
+  @as_transfer Coinbase.Transfer
+  @as_key_transfers :transfers
 
   @doc """
   Buy bitcoin
@@ -19,6 +19,6 @@ defmodule Coinbase.API.Buys do
   def buy(coinbase, qty, optionals \\ %{}) do
     params = %{qty: qty}
     params = add_optionals(params, optionals)
-    Base.post(coinbase, @endpoint, params, @data_struct, @search_key)
+    Base.post(coinbase, @endpoint, params, @as_transfer, @as_key_transfers)
   end
 end

@@ -1,0 +1,25 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "User-Agent": "Elixir",
+        "Connection": "close",
+        "Host": "coinbase.com",
+        "Content-Type": "application/json",
+        "ACCESS_KEY": "api_key"
+      },
+      "method": "get",
+      "options": [],
+      "url": "https://api.coinbase.com/v1/transactions/53f3d9e0cbf034354a000132/sighashes"
+    },
+    "response": {
+      "body": "{\n  \"transaction\": {\n    \"id\": \"53f3d9e0cbf034354a000132\",\n    \"inputs\": [\n      {\n        \"input\": {\n          \"position\": 1,\n          \"sighash\": \"39ff838374b640f2047218d2f0c9e2e44668b431bc173ca17b081ccc556887f2\",\n          \"address\": {\n            \"address\": \"3MYkv7yGLNguX3Kcv7b834YwstokbgVpsz\",\n            \"addresses\": [\n              {\n                \"address\": {\n                  \"address\": \"1DKnVf35bHvyazKd5RcvtDjpR6UDL7mE8n\",\n                  \"node_path\": \"m/4\"\n                }\n              },\n              {\n                \"address\": {\n                  \"address\": \"18stcVaAdZnoxfuZeHwgjaCphGK291Xe6n\",\n                  \"node_path\": \"m/4\"\n                }\n              },\n              {\n                \"address\": {\n                  \"address\": \"13oQ7SZBwfySZFWZFxLyL5YN2vtVscQcsf\",\n                  \"node_path\": \"m/4\"\n                }\n              }\n            ]\n          }\n        }\n      }\n    ]\n  }\n}",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

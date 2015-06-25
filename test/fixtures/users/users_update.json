@@ -1,0 +1,25 @@
+[
+  {
+    "request": {
+      "body": "{\n  \"user\": {\n    \"native_currency\": \"CAD\"\n  }\n}",
+      "headers": {
+        "User-Agent": "Elixir",
+        "Connection": "close",
+        "Host": "coinbase.com",
+        "Content-Type": "application/json",
+        "ACCESS_KEY": "api_key"
+      },
+      "method": "put",
+      "options": [],
+      "url": "https://api.coinbase.com/v1/users/512db383f8182bd24d000001"
+    },
+    "response": {
+      "body": "{\n  \"success\": true,\n  \"user\": {\n    \"id\": \"512db383f8182bd24d000001\",\n    \"name\": \"User One\",\n    \"email\": \"user@example.com\",\n    \"time_zone\": \"Pacific Time (US & Canada)\",\n    \"native_currency\": \"CAD\",\n    \"buy_level\": 1,\n    \"sell_level\": 1,\n    \"balance\": {\n      \"amount\": \"49.76000000\",\n      \"currency\": \"BTC\"\n    },\n    \"buy_limit\": {\n      \"amount\": \"1000\",\n      \"currency\": \"USD\"\n    },\n    \"sell_limit\": {\n      \"amount\": \"1000\",\n      \"currency\": \"USD\"\n    }\n  }\n}",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

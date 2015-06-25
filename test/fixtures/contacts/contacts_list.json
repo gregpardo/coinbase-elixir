@@ -1,0 +1,25 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "User-Agent": "Elixir",
+        "Connection": "close",
+        "Host": "coinbase.com",
+        "Content-Type": "application/json",
+        "ACCESS_KEY": "api_key"
+      },
+      "method": "get",
+      "options": [],
+      "url": "https://api.coinbase.com/v1/contacts"
+    },
+    "response": {
+      "body": "{\n  \"contacts\": [\n    {\n      \"contact\": {\n        \"email\": \"user1@example.com\"\n      }\n    },\n    {\n      \"contact\": {\n        \"email\": \"user2@example.com\"\n      }\n    }\n  ],\n  \"total_count\": 2,\n  \"num_pages\": 1,\n  \"current_page\": 1\n}",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

@@ -1,0 +1,25 @@
+[
+  {
+    "request": {
+      "body": "{\n  \"transaction\": {\n    \"to\": \"user1@example.com\",\n    \"amount\": \"1.234\",\n    \"notes\": \"Sample transaction for you\"\n  }\n}",
+      "headers": {
+        "User-Agent": "Elixir",
+        "Connection": "close",
+        "Host": "coinbase.com",
+        "Content-Type": "application/json",
+        "ACCESS_KEY": "api_key"
+      },
+      "method": "post",
+      "options": [],
+      "url": "https://api.coinbase.com/v1/transactions/send_money"
+    },
+    "response": {
+      "body": "{\n  \"success\": true,\n  \"transaction\": {\n    \"id\": \"501a1791f8182b2071000087\",\n    \"created_at\": \"2012-08-01T23:00:49-07:00\",\n    \"hsh\": \"9d6a7d1112c3db9de5315b421a5153d71413f5f752aff75bf504b77df4e646a3\",\n    \"notes\": \"Sample transaction for you!\",\n    \"idem\": \"\",\n    \"amount\": {\n      \"amount\": \"-1.23400000\",\n      \"currency\": \"BTC\"\n    },\n    \"request\": false,\n    \"status\": \"pending\",\n    \"sender\": {\n      \"id\": \"5011f33df8182b142400000e\",\n      \"name\": \"User Two\",\n      \"email\": \"user2@example.com\"\n    },\n    \"recipient\": {\n      \"id\": \"5011f33df8182b142400000a\",\n      \"name\": \"User One\",\n      \"email\": \"user1@example.com\"\n    },\n    \"recipient_address\": \"37muSN5ZrukVTvyVh3mT5Zc5ew9L9CBare\"\n  }\n}",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

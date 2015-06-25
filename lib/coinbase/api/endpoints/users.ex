@@ -15,7 +15,7 @@ defmodule Coinbase.API.Users do
   end
 
   @doc """
-  Create a new user
+  Create a new user (This API does not exist in current coinbase API reference. Might not work. Not included in tests.)
 
   NOTE: Coinbase will error if you pass it additional uncessary fields so mark them as :undefined in the object or create a new object with only those fields
 

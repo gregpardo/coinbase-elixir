@@ -1,0 +1,25 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "User-Agent": "Elixir",
+        "Connection": "close",
+        "Host": "coinbase.com",
+        "Content-Type": "application/json",
+        "ACCESS_KEY": "api_key"
+      },
+      "method": "get",
+      "options": [],
+      "url": "https://api.coinbase.com/v1/reports/533e5de1137f73ccf1000139"
+    },
+    "response": {
+      "body": "{\n  \"report\": {\n    \"id\": \"5347146a137f730e1c0000cb\",\n    \"type\": \"transactions\",\n    \"status\": \"completed\",\n    \"email\": \"dummy@example.com\",\n    \"repeat\": \"never\",\n    \"time_range\": \"past_30\",\n    \"callback_url\": null,\n    \"file_url\": \"http://localhost:3000\",\n    \"times\": -1,\n    \"times_run\": 1,\n    \"last_run\": \"2014-04-10T15:00:00-07:00\",\n    \"next_run\": \"2014-04-10T15:00:00-07:00\",\n    \"created_at\": \"2014-04-10T15:00:10-07:00\"\n  }\n}",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

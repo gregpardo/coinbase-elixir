@@ -1,0 +1,25 @@
+[
+  {
+    "request": {
+      "body": "{\n\n}",
+      "headers": {
+        "User-Agent": "Elixir",
+        "Connection": "close",
+        "Host": "coinbase.com",
+        "Content-Type": "application/json",
+        "ACCESS_KEY": "api_key"
+      },
+      "method": "post",
+      "options": [],
+      "url": "https://api.coinbase.com/v1/tokens"
+    },
+    "response": {
+      "body": "{\n  \"success\": true,\n  \"token\": {\n    \"token_id\": \"abc12e821cf6e128afc2e821cf68e12cf68e168e128af21cf682e821cf68e1fe\",\n    \"address\": \"n3NzN74qGYHSHPhKM1hdts3bF1zV4N1Aa3\"\n  }\n}",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

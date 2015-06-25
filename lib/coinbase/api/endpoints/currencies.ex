@@ -2,15 +2,15 @@ defmodule Coinbase.API.Currencies do
   alias Coinbase.API.Base
 
   @endpoint "currencies"
-  @data_struct :none
-  @search_key String.to_atom(@endpoint)
+  @as_none :none
+  @as_key_currencies :currencies
 
   @doc """
   List currencies supported by Coinbase
   """
   @spec list(pid) :: Coinbase.response
   def list(coinbase) do
-    Base.list(coinbase, @endpoint, %{}, @data_struct, @search_key)
+    Base.list(coinbase, @endpoint, %{}, @as_none, @as_key_currencies)
   end
 
   @doc """
@@ -18,6 +18,6 @@ defmodule Coinbase.API.Currencies do
   """
   @spec exchange_rates(pid) :: Coinbase.response
   def exchange_rates(coinbase) do
-    Base.get(coinbase, "#{@endpoint}/exchange_rates", %{}, @data_struct, @search_key)
+    Base.get(coinbase, "#{@endpoint}/exchange_rates", %{}, @as_none, @as_key_currencies)
   end
 end

@@ -1,0 +1,25 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "User-Agent": "Elixir",
+        "Connection": "close",
+        "Host": "coinbase.com",
+        "Content-Type": "application/json",
+        "ACCESS_KEY": "api_key"
+      },
+      "method": "post",
+      "options": [],
+      "url": "https://api.coinbase.com/v1/reports"
+    },
+    "response": {
+      "body": "{\n  \"reports\": [\n    {\n      \"report\": {\n        \"id\": \"53463bf8137f730e1c000060\",\n        \"type\": \"orders\",\n        \"status\": \"completed\",\n        \"email\": \"admin@example.com\",\n        \"repeat\": \"never\",\n        \"time_range\": \"past_30\",\n        \"callback_url\": null,\n        \"file_url\": \"http://localhost:3000\",\n        \"times\": -1,\n        \"times_run\": 1,\n        \"last_run\": \"2014-04-09T23:00:00-07:00\",\n        \"next_run\": \"2014-04-09T23:00:00-07:00\",\n        \"created_at\": \"2014-04-09T23:36:40-07:00\"\n      }\n    }\n  ],\n  \"total_count\": 1,\n  \"num_pages\": 1,\n  \"current_page\": 1\n}",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

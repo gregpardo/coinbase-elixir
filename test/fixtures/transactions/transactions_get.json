@@ -1,0 +1,25 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "User-Agent": "Elixir",
+        "Connection": "close",
+        "Host": "coinbase.com",
+        "Content-Type": "application/json",
+        "ACCESS_KEY": "api_key"
+      },
+      "method": "get",
+      "options": [],
+      "url": "https://api.coinbase.com/v1/transactions/5018f833f8182b129c00002f"
+    },
+    "response": {
+      "body": "{\n  \"transaction\": {\n    \"id\": \"5018f833f8182b129c00002f\",\n    \"created_at\": \"2012-08-01T02:34:43-07:00\",\n    \"amount\": {\n      \"amount\": \"-1.10000000\",\n      \"currency\": \"BTC\"\n    },\n    \"request\": true,\n    \"status\": \"pending\",\n    \"sender\": {\n      \"id\": \"5011f33df8182b142400000e\",\n      \"name\": \"User Two\",\n      \"email\": \"user2@example.com\"\n    },\n    \"recipient\": {\n      \"id\": \"5011f33df8182b142400000a\",\n      \"name\": \"User One\",\n      \"email\": \"user1@example.com\"\n    }\n  }\n}",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

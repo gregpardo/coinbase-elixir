@@ -3,8 +3,8 @@ defmodule Coinbase.API.Deposits do
   import Coinbase.Util.Params
 
   @endpoint "deposits"
-  @data_struct Coinbase.Transfer
-  @search_key String.to_atom(@endpoint)
+  @as_transfer Coinbase.Transfer
+  @as_key_deposits :deposits
 
   @moduledoc """
   Deposit USD into a USD wallet. Requires a valid USD wallet and bank account to use.
@@ -25,6 +25,6 @@ defmodule Coinbase.API.Deposits do
   def deposit(coinbase, account_id, amount, payment_method_id, optionals \\ %{}) do
     params = %{account_id: account_id, amount: amount, payment_method_id: payment_method_id}
     params = add_optionals(params, optionals)
-    Base.post(coinbase, @endpoint, params, @data_struct, @search_key)
+    Base.post(coinbase, @endpoint, params, @as_transfer, @as_key_deposits)
   end
 end

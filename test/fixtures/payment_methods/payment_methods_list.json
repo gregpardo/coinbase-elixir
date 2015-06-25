@@ -1,0 +1,25 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "User-Agent": "Elixir",
+        "Connection": "close",
+        "Host": "coinbase.com",
+        "Content-Type": "application/json",
+        "ACCESS_KEY": "api_key"
+      },
+      "method": "get",
+      "options": [],
+      "url": "https://api.coinbase.com/v1/payment_methods"
+    },
+    "response": {
+      "body": "{\n  \"payment_methods\": [\n    {\n      \"payment_method\": {\n        \"id\": \"530eb5b217cb34e07a000011\",\n        \"name\": \"US Bank ****4567\",\n        \"can_buy\": true,\n        \"can_sell\": true\n       }\n    },\n    {\n      \"payment_method\": {\n        \"id\": \"530eb7e817cb34e07a00001a\",\n        \"name\": \"VISA card 1111\",\n        \"can_buy\": false,\n        \"can_sell\": false\n       }\n    }\n  ],\n  \"default_buy\": \"530eb5b217cb34e07a000011\",\n  \"default_sell\": \"530eb5b217cb34e07a000011\"\n}",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

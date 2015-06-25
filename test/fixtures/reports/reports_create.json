@@ -1,0 +1,25 @@
+[
+  {
+    "request": {
+      "body": "{\n  \"report\": {\n    \"type\": \"transactions\",\n    \"email\": \"dummy@example.com\",\n    \"callback_url\": \"http://example.com/callback\",\n    \"time_range\": \"custom\",\n    \"time_range_start\": \"04/01/2014\",\n    \"time_range_end\": \"04/11/2014\",\n    \"start_type\": \"on\",\n    \"next_run_date\": \"04/20/2014\",\n    \"next_run_time\": \"16:30\",\n    \"repeat\": \"weekly\",\n    \"times\": 2\n  }\n}",
+      "headers": {
+        "User-Agent": "Elixir",
+        "Connection": "close",
+        "Host": "coinbase.com",
+        "Content-Type": "application/json",
+        "ACCESS_KEY": "api_key"
+      },
+      "method": "post",
+      "options": [],
+      "url": "https://api.coinbase.com/v1/reports"
+    },
+    "response": {
+      "body": "{\n  \"success\": true,\n  \"report\": {\n    \"id\": \"534736cd137f730e1c0000d9\",\n    \"type\": \"transactions\",\n    \"status\": \"active\",\n    \"email\": \"dummy@example.com\",\n    \"repeat\": \"weekly\",\n    \"time_range\": \"custom\",\n    \"callback_url\": \"http://example.com/callback\",\n    \"file_url\": null,\n    \"times\": 2,\n    \"times_run\": 0,\n    \"last_run\": null,\n    \"next_run\": \"2014-04-20T16:30:00-07:00\",\n    \"created_at\": \"2014-04-10T17:26:53-07:00\"\n  }\n}",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

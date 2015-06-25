@@ -3,8 +3,8 @@ defmodule Coinbase.API.Contacts do
   import Coinbase.Util.Params
 
   @endpoint "contacts"
-  @data_struct Coinbase.Contact
-  @search_key String.to_atom(@endpoint)
+  @as_contact Coinbase.Contact
+  @as_key_contacts :contacts
 
   @doc """
   List emails the user has previously used for autocompletion
@@ -17,6 +17,6 @@ defmodule Coinbase.API.Contacts do
   @spec list(pid, map) :: Coinbase.response
   def list(coinbase, optionals) do
     params = add_optionals(%{}, optionals)
-    Base.list(coinbase, @endpoint, params, @data_struct, @search_key)
+    Base.list(coinbase, @endpoint, params, @as_contact, @as_key_contacts)
   end
 end
