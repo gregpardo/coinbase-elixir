@@ -1,3 +1,5 @@
+Code.ensure_loaded?(Hex) and Hex.start
+
 defmodule Coinbase.Mixfile do
   use Mix.Project
 
@@ -30,7 +32,7 @@ defmodule Coinbase.Mixfile do
       {:timex, "~> 0.13.3"},
       {:exvcr, "~> 0.4.0", only: :test},
       {:earmark, "~> 0.1", only: :dev},
-      {:ex_doc, "~> 0.6", only: :dev}
+      {:ex_doc, "~> 0.7", only: :dev}
     ]
   end
 
