@@ -1,6 +1,6 @@
 # Coinbase-Elixir
 
-Coinbase API V1 Client for Elixir v0.1:
+Coinbase API V1 Client for Elixir:
 
 This is an unofficial alpha coinbase API client for the [Elixir](http://elixir-lang.org/) language. 
 
